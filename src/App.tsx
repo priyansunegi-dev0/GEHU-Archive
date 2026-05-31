@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "next-themes"
+import { Analytics } from "@vercel/analytics/react"
 import { Header } from "@/components/Header"
 import { Home } from "@/pages/Home"
 import { Doubts } from "@/pages/Doubts"
@@ -54,6 +55,7 @@ export function App() {
           <Route path="/admin/callback" element={<AdminCallback />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
+        <Analytics />
       </Router>
     </ThemeProvider>
   )
