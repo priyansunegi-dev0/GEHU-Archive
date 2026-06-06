@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { SEO } from '@/components/SEO';
-import { FileText, ArrowUp, Eye } from 'lucide-react';
+import { FileText, ArrowUp, Eye, Upload } from 'lucide-react';
 import type { Folder as FolderType, PDF } from '@/types';
+import { UploadModal } from '@/components/UploadModal';
+import { fetchPDFsFromGitHub, buildFolderPath, type GitHubPDF } from '@/lib/githubPDFs';
 
 const FolderImg = ({ name }: { name: string }) => {
   const isSpecial = name.toLowerCase() === "others" || name.toLowerCase() === "old";
@@ -1286,6 +1288,9 @@ export function Home() {
   const [subFolders, setSubFolders] = useState<FolderType[]>([]);
   const [pdfs, setPdfs] = useState<PDF[]>([]);
   const [loading, setLoading] = useState(false);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [githubPdfs, setGithubPdfs] = useState<GitHubPDF[]>([]);
+  const [loadingGithubPdfs, setLoadingGithubPdfs] = useState(false);
 
 
   useEffect(() => {
@@ -1305,6 +1310,27 @@ export function Home() {
     const cleanup = fetchContents(currentFolder?.id ?? null);
     return cleanup;
   }, [currentFolder]);
+
+  // Fetch PDFs from GitHub when we enter a leaf folder
+  useEffect(() => {
+    if (!currentFolder) {
+      setGithubPdfs([]);
+      return;
+    }
+    // Check if it's a leaf folder (no child folders in FOLDERS)
+    const hasChildren = FOLDERS.some((f: FolderType) => f.parent_id === currentFolder.id);
+    if (hasChildren) {
+      setGithubPdfs([]);
+      return;
+    }
+    // Build folder path from breadcrumb
+    const folderPath = buildFolderPath(breadcrumb.map(b => b.name));
+    setLoadingGithubPdfs(true);
+    fetchPDFsFromGitHub(folderPath).then(pdfs => {
+      setGithubPdfs(pdfs);
+      setLoadingGithubPdfs(false);
+    });
+  }, [currentFolder, breadcrumb]);
 
   const fetchContents = (parentId: string | null) => {
     setLoading(true);
@@ -1349,7 +1375,11 @@ export function Home() {
     return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
   };
 
-  const isEmpty = !loading && subFolders.length === 0 && pdfs.length === 0;
+  // Check if we're in a leaf folder (subject level — no child folders)
+  const isLeafFolder = currentFolder && !FOLDERS.some((f: FolderType) => f.parent_id === currentFolder.id);
+  const folderPathForUpload = buildFolderPath(breadcrumb.map(b => b.name));
+
+  const isEmpty = !loading && !loadingGithubPdfs && subFolders.length === 0 && pdfs.length === 0 && githubPdfs.length === 0;
 
   return (
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -1378,7 +1408,25 @@ export function Home() {
           ))}
         </nav>
 
+        {/* Upload Button — shown only inside leaf (subject) folders */}
+        {isLeafFolder && (
+          <button
+            onClick={() => setShowUploadModal(true)}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold text-sm hover:opacity-90 transition-opacity shadow-sm"
+          >
+            <Upload className="h-4 w-4" />
+            Upload PYQ
+          </button>
+        )}
       </div>
+
+      {/* Upload Modal */}
+      <UploadModal
+        isOpen={showUploadModal}
+        onClose={() => setShowUploadModal(false)}
+        folderPath={folderPathForUpload}
+        subjectName={currentFolder?.name || ''}
+      />
 
       {/* File Browser */}
       <div>
@@ -1444,6 +1492,39 @@ export function Home() {
                 ))}
               </div>
             )}
+
+            {/* GitHub PDFs — fetched from GitHub repo */}
+            {loadingGithubPdfs ? (
+              <div className="mt-3 divide-y divide-gray-100 dark:divide-gray-800">
+                {[...Array(3)].map((_, i: number) => (
+                  <div key={i} className="px-4 py-3 flex items-center gap-3 animate-pulse">
+                    <div className="h-5 w-5 bg-gray-200 dark:bg-gray-700 rounded" />
+                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3" />
+                  </div>
+                ))}
+              </div>
+            ) : githubPdfs.length > 0 ? (
+              <div className="mt-3 border border-zinc-300 dark:border-zinc-700 rounded-xl overflow-hidden bg-white dark:bg-black divide-y divide-gray-100 dark:divide-zinc-900">
+                {githubPdfs.map((gpdf: GitHubPDF) => (
+                  <div key={gpdf.id} className="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-zinc-950/40 transition-colors">
+                    <FileText className="h-6 w-6 text-red-500 flex-shrink-0" />
+                    <span className="flex-1 text-black dark:text-white truncate font-medium text-sm md:text-base">{gpdf.name}</span>
+                    <span className="hidden sm:block w-24 text-right text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
+                      {formatFileSize(gpdf.size)}
+                    </span>
+                    <a
+                      href={gpdf.download_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 ml-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors flex-shrink-0 shadow-sm"
+                    >
+                      <Eye className="h-4 w-4" />
+                      View
+                    </a>
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </>
         )}
       </div>

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@octokit/rest": "^22.0.1",
     "@supabase/supabase-js": "^2.107.0",
     "@tailwindcss/vite": "^4.2.1",
     "@vercel/analytics": "^2.0.1",
