@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dehradun.in-gehu.in/sitemap.xml
+Sitemap: https://doubts.in-gehu.in/sitemap.xml
+Sitemap: https://geupyqs.in-gehu.in/sitemap.xml
+Sitemap: https://gehupyqs.in-gehu.in/sitemap.xml
+Sitemap: https://haldwani.in-gehu.in/sitemap.xml
+Sitemap: https://bhimtal.in-gehu.in/sitemap.xml

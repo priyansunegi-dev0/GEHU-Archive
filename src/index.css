@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@font-face {
+  font-family: 'Aurelia Emiko';
+  src: url('/fonts/Aurelia Emiko.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Aurelia Emiko', sans-serif;
+  --font-serif: 'Aurelia Emiko', serif;
+  --font-mono: 'Aurelia Emiko', monospace;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Aurelia Emiko', sans-serif;
+}
+
+body {
+  @apply bg-white dark:bg-black text-black dark:text-white transition-colors;
+  font-family: 'Aurelia Emiko', sans-serif;
+}
