@@ -150,11 +150,6 @@ export function Home() {
     }
   };
 
-  const formatFileSize = (bytes: number) => {
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
-    return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
-  };
-
   const isEmpty = !loading && subFolders.length === 0 && pdfs.length === 0;
 
   return (
