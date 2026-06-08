@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { SEO } from '@/components/SEO';
 import { ArrowUp } from 'lucide-react';
 import type { Folder as FolderType, PDF } from '@/types';
@@ -88,8 +89,25 @@ const FOLDERS: FolderType[] = manifest.folders;
 const PDFS: PDF[] = manifest.pdfs;
 
 export function Home() {
-  const [currentFolder, setCurrentFolder] = useState<FolderType | null>(null);
-  const [breadcrumb, setBreadcrumb] = useState<BreadcrumbItem[]>([{ id: null, name: 'PYQs' }]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const folderId = searchParams.get('f');
+
+  const currentFolder = folderId ? (FOLDERS.find((f: FolderType) => f.id === folderId) || null) : null;
+  const activeFolderId = currentFolder ? folderId : null;
+
+  const breadcrumb = (() => {
+    const crumbs: BreadcrumbItem[] = [];
+    let currentId = activeFolderId;
+    while (currentId) {
+      const folder = FOLDERS.find((f: FolderType) => f.id === currentId);
+      if (!folder) break;
+      crumbs.unshift({ id: folder.id, name: folder.name });
+      currentId = folder.parent_id;
+    }
+    crumbs.unshift({ id: null, name: 'PYQs' });
+    return crumbs;
+  })();
+
   const [subFolders, setSubFolders] = useState<FolderType[]>([]);
   const [pdfs, setPdfs] = useState<PDF[]>([]);
   const [loading, setLoading] = useState(false);
@@ -108,9 +126,9 @@ export function Home() {
   }, [breadcrumb]);
 
   useEffect(() => {
-    const cleanup = fetchContents(currentFolder?.id ?? null);
+    const cleanup = fetchContents(activeFolderId);
     return cleanup;
-  }, [currentFolder]);
+  }, [activeFolderId]);
 
   const fetchContents = (parentId: string | null) => {
     setLoading(true);
@@ -125,20 +143,16 @@ export function Home() {
   };
 
   const openFolder = (folder: FolderType) => {
-    setCurrentFolder(folder);
-    setBreadcrumb(prev => [...prev, { id: folder.id, name: folder.name }]);
+    setSearchParams({ f: folder.id });
     window.scrollTo(0, 0);
   };
 
   const navigateBreadcrumb = (index: number) => {
     const crumb = breadcrumb[index];
-    const newBreadcrumb = breadcrumb.slice(0, index + 1);
-    setBreadcrumb(newBreadcrumb);
     if (crumb.id) {
-      const found = FOLDERS.find((f: FolderType) => f.id === crumb.id);
-      if (found) setCurrentFolder(found);
+      setSearchParams({ f: crumb.id });
     } else {
-      setCurrentFolder(null);
+      setSearchParams({});
     }
     window.scrollTo(0, 0);
   };
