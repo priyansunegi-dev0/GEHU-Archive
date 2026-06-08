@@ -58,7 +58,7 @@ function coursesManifestPlugin() {
 
       traverse(coursesDir, null);
 
-      const manifestPath = path.resolve(__dirname, 'src/courses-manifest.json');
+      const manifestPath = path.resolve(__dirname, 'public/courses-manifest.json');
       fs.writeFileSync(manifestPath, JSON.stringify({ folders, pdfs }, null, 2), 'utf-8');
       console.log(`[manifest-plugin] Successfully updated courses manifest with ${folders.length} folders and ${pdfs.length} PDFs.`);
     } catch (err) {

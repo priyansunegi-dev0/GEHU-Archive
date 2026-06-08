@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SEO } from '@/components/SEO';
 import { ArrowUp } from 'lucide-react';
 import type { Folder as FolderType, PDF } from '@/types';
-import manifest from '@/courses-manifest.json';
 
 const FolderImg = ({ name }: { name: string }) => {
   const isSpecial = name.toLowerCase() === "others" || name.toLowerCase() === "old";
   return (
     <img
-      src={isSpecial ? "https://img.icons8.com/material-rounded/192/4D4D4D/folder-invoices.png" : "/folder.svg"}
+      src={isSpecial ? "/folder-special.svg" : "/folder.svg"}
       alt="folder"
       className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0"
     />
@@ -85,32 +84,115 @@ interface BreadcrumbItem {
   name: string;
 }
 
-const FOLDERS: FolderType[] = manifest.folders;
-const PDFS: PDF[] = manifest.pdfs;
+let cachedManifest: { folders: FolderType[]; pdfs: PDF[] } | null = null;
+const SESSION_CACHE_KEY = 'gehu-courses-manifest';
 
 export function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const folderId = searchParams.get('f');
 
-  const currentFolder = folderId ? (FOLDERS.find((f: FolderType) => f.id === folderId) || null) : null;
+  const [allFolders, setAllFolders] = useState<FolderType[]>(() => {
+    if (cachedManifest) return cachedManifest.folders;
+    try {
+      const stored = sessionStorage.getItem(SESSION_CACHE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        cachedManifest = parsed;
+        return parsed.folders || [];
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return [];
+  });
+
+  const [allPdfs, setAllPdfs] = useState<PDF[]>(() => {
+    if (cachedManifest) return cachedManifest.pdfs;
+    try {
+      const stored = sessionStorage.getItem(SESSION_CACHE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        cachedManifest = parsed;
+        return parsed.pdfs || [];
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return [];
+  });
+
+  const [manifestLoading, setManifestLoading] = useState(() => {
+    if (cachedManifest) return false;
+    try {
+      const stored = sessionStorage.getItem(SESSION_CACHE_KEY);
+      if (stored) return false;
+    } catch (e) {}
+    return true;
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch('/courses-manifest.json')
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        if (!isMounted) return;
+        
+        // Detect actual difference to avoid unnecessary rendering
+        const hasChanged = JSON.stringify(cachedManifest) !== JSON.stringify(data);
+        if (hasChanged) {
+          cachedManifest = data;
+          try {
+            sessionStorage.setItem(SESSION_CACHE_KEY, JSON.stringify(data));
+          } catch (e) {}
+          setAllFolders(data.folders || []);
+          setAllPdfs(data.pdfs || []);
+        }
+        setManifestLoading(false);
+      })
+      .catch((err) => {
+        console.error('Failed to fetch courses manifest:', err);
+        if (isMounted) {
+          setManifestLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const currentFolder = useMemo(() => {
+    if (!folderId) return null;
+    return allFolders.find((f: FolderType) => f.id === folderId) || null;
+  }, [folderId, allFolders]);
+
   const activeFolderId = currentFolder ? folderId : null;
 
-  const breadcrumb = (() => {
+  const breadcrumb = useMemo(() => {
     const crumbs: BreadcrumbItem[] = [];
     let currentId = activeFolderId;
     while (currentId) {
-      const folder = FOLDERS.find((f: FolderType) => f.id === currentId);
+      const folder = allFolders.find((f: FolderType) => f.id === currentId);
       if (!folder) break;
       crumbs.unshift({ id: folder.id, name: folder.name });
       currentId = folder.parent_id;
     }
     crumbs.unshift({ id: null, name: 'PYQs' });
     return crumbs;
-  })();
+  }, [activeFolderId, allFolders]);
 
-  const [subFolders, setSubFolders] = useState<FolderType[]>([]);
-  const [pdfs, setPdfs] = useState<PDF[]>([]);
-  const [loading, setLoading] = useState(false);
+  const subFolders = useMemo(() => {
+    return allFolders.filter((f: FolderType) => f.parent_id === activeFolderId);
+  }, [activeFolderId, allFolders]);
+
+  const pdfs = useMemo(() => {
+    return activeFolderId ? allPdfs.filter((p: PDF) => p.folder_id === activeFolderId) : [];
+  }, [activeFolderId, allPdfs]);
+
+  const loading = manifestLoading;
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -124,23 +206,6 @@ export function Home() {
     const path = breadcrumb.map((item: BreadcrumbItem) => item.name).filter(Boolean).join(' / ');
     document.title = `${path} | ${campusSuffix}`;
   }, [breadcrumb]);
-
-  useEffect(() => {
-    const cleanup = fetchContents(activeFolderId);
-    return cleanup;
-  }, [activeFolderId]);
-
-  const fetchContents = (parentId: string | null) => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      const folders = FOLDERS.filter((f: FolderType) => f.parent_id === parentId);
-      const fileList = parentId ? PDFS.filter((p: PDF) => p.folder_id === parentId) : [];
-      setSubFolders(folders);
-      setPdfs(fileList);
-      setLoading(false);
-    }, 120);
-    return () => clearTimeout(timer);
-  };
 
   const openFolder = (folder: FolderType) => {
     setSearchParams({ f: folder.id });

@@ -1,0 +1,23 @@
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Back flap -->
+  <path d="M2 5.5C2 4.67157 2.67157 4 3.5 4H8.5L11 6.5H20.5C21.3284 6.5 22 7.17157 22 8V18.5C22 19.3284 21.3284 20 20.5 20H3.5C2.67157 20 2 19.3284 2 18.5V5.5Z" fill="url(#folder-back-special)"/>
+  <!-- Document paper inside -->
+  <rect x="6" y="5" width="12" height="11" rx="1.5" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+  <line x1="9" y1="8" x2="15" y2="8" stroke="#CBD5E1" stroke-width="1" stroke-linecap="round"/>
+  <line x1="9" y1="10" x2="15" y2="10" stroke="#CBD5E1" stroke-width="1" stroke-linecap="round"/>
+  <line x1="9" y1="12" x2="13" y2="12" stroke="#CBD5E1" stroke-width="1" stroke-linecap="round"/>
+  <!-- Front flap -->
+  <path d="M2 9.5C2 8.67157 2.67157 8 3.5 8H20.5C21.3284 8 22 8.67157 22 9.5V18.5C22 19.3284 21.3284 20 20.5 20H3.5C2.67157 20 2 19.3284 2 18.5V9.5Z" fill="url(#folder-front-special)"/>
+  <!-- Highlight -->
+  <path d="M3.5 8H20.5C21.3284 8 22 8.67157 22 9.5V10C22 9.17157 21.3284 8.5 20.5 8.5H3.5C2.67157 8.5 2 9.17157 2 10V9.5C2 8.67157 2.67157 8 3.5 8Z" fill="white" fill-opacity="0.2"/>
+  <defs>
+    <linearGradient id="folder-back-special" x1="12" y1="4" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4B5563"/>
+      <stop offset="1" stop-color="#1F2937"/>
+    </linearGradient>
+    <linearGradient id="folder-front-special" x1="12" y1="8" x2="12" y2="20" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9CA3AF"/>
+      <stop offset="1" stop-color="#4B5563"/>
+    </linearGradient>
+  </defs>
+</svg>
