@@ -29,6 +29,7 @@ export function AdminDashboard() {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [signingIn, setSigningIn] = useState(false);
+  const [isNavigatingAway, setIsNavigatingAway] = useState(false);
 
   // Admin email check
   const [adminEmails, setAdminEmails] = useState<string[]>([]);
@@ -139,8 +140,11 @@ export function AdminDashboard() {
 
   // ─── Sign out ─────────────────────────────────────────────────
   const handleSignOut = () => {
+    setIsNavigatingAway(true);
     navigate('/pyqs');
-    supabase.auth.signOut().then(() => setSession(null));
+    setTimeout(() => {
+      supabase.auth.signOut().then(() => setSession(null));
+    }, 100);
   };
 
   // ─── Delete a doubt (and its answers cascade) ─────────────────
@@ -275,7 +279,7 @@ export function AdminDashboard() {
   };
 
   // ─── Loading state ────────────────────────────────────────────
-  if (loading) {
+  if (loading || isNavigatingAway) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
         <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
