@@ -290,9 +290,8 @@ export function AdminDashboard() {
         <SEO page="admin" />
         <div className="w-full max-w-md">
           <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 sm:p-10 shadow-lg text-center">
-            {/* Shield icon */}
-            <div className="mx-auto w-16 h-16 rounded-2xl bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center mb-6">
-              <img src="/logo.webp" alt="Logo" className="h-8 w-8 object-contain" />
+            <div className="flex justify-center mb-6">
+              <img src="/logo.webp" alt="Logo" className="h-24 w-auto object-contain" />
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-2">
@@ -340,9 +339,8 @@ export function AdminDashboard() {
         <SEO page="admin" />
         <div className="w-full max-w-md">
           <div className="bg-white dark:bg-zinc-950 border border-red-200 dark:border-red-900 rounded-3xl p-8 sm:p-10 shadow-lg text-center">
-            {/* Denied icon */}
-            <div className="mx-auto w-16 h-16 rounded-2xl bg-red-50 dark:bg-red-950/30 flex items-center justify-center mb-6">
-              <img src="/logo.webp" alt="Logo" className="h-8 w-8 object-contain" />
+            <div className="flex justify-center mb-6">
+              <img src="/logo.webp" alt="Logo" className="h-24 w-auto object-contain" />
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-2">
