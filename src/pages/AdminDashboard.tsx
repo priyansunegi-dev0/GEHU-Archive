@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabaseClient';
 import { SEO } from '@/components/SEO';
 import {
@@ -24,6 +25,7 @@ interface Answer {
 }
 
 export function AdminDashboard() {
+  const navigate = useNavigate();
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [signingIn, setSigningIn] = useState(false);
@@ -139,6 +141,7 @@ export function AdminDashboard() {
   const handleSignOut = async () => {
     await supabase.auth.signOut();
     setSession(null);
+    navigate('/pyqs');
   };
 
   // ─── Delete a doubt (and its answers cascade) ─────────────────
