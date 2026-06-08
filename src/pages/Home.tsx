@@ -27,6 +27,20 @@ const PdfIcon = () => (
   </svg>
 );
 
+// Format PDF filename: subject code & single-letter sets stay UPPERCASE, rest lowercase
+const formatPdfName = (fileName: string): string => {
+  const name = fileName.replace(/\.pdf$/i, '');
+  const parts = name.split('_');
+  return parts.map((part, i) => {
+    // First part is always the subject code (e.g. bp105, tcs303) → uppercase
+    if (i === 0) return part.toUpperCase();
+    // Single character tokens are set letters (e.g. t, a, b) → uppercase
+    if (part.length === 1 && /[a-zA-Z]/.test(part)) return part.toUpperCase();
+    // Everything else → lowercase
+    return part.toLowerCase();
+  }).join(' ');
+};
+
 interface BreadcrumbItem {
   id: string | null;
   name: string;
@@ -177,7 +191,7 @@ export function Home() {
                 {pdfs.map((pdf: PDF) => (
                   <div key={pdf.id} className="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-zinc-950/40 transition-colors">
                     <PdfIcon />
-                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="flex-1 text-black dark:text-white truncate font-medium text-sm md:text-base">{pdf.file_name}</span>
+                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="flex-1 text-black dark:text-white truncate font-medium text-sm md:text-base">{formatPdfName(pdf.file_name)}</span>
                     <span className="hidden sm:block w-24 text-right text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
                       {formatFileSize(pdf.file_size)}
                     </span>
