@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SEO } from '@/components/SEO';
-import { ArrowUp, Eye } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import type { Folder as FolderType, PDF } from '@/types';
 import manifest from '@/courses-manifest.json';
 
@@ -187,25 +187,17 @@ export function Home() {
               ))}
             </div>
             {pdfs.length > 0 && (
-              <div className="mt-3 border border-zinc-300 dark:border-zinc-700 rounded-xl overflow-hidden bg-white dark:bg-black divide-y divide-gray-100 dark:divide-zinc-900">
+              <div className="flex flex-col divide-y divide-zinc-200 dark:divide-zinc-800">
                 {pdfs.map((pdf: PDF) => (
-                  <div key={pdf.id} className="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-zinc-950/40 transition-colors">
-                    <PdfIcon />
-                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="flex-1 text-black dark:text-white truncate font-medium text-sm md:text-base">{formatPdfName(pdf.file_name)}</span>
-                    <span className="hidden sm:block w-24 text-right text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
-                      {formatFileSize(pdf.file_size)}
-                    </span>
-                    <span className="hidden sm:block w-28 text-right text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
-                      {new Date(pdf.created_at).toLocaleDateString()}
-                    </span>
+                  <div key={pdf.id} className="py-4">
                     <a
                       href={pdf.file_path || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 ml-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors flex-shrink-0 shadow-sm"
+                      className="flex w-full items-center gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                     >
-                      <Eye className="h-4 w-4" />
-                      View
+                      <PdfIcon />
+                      <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-xs md:text-sm lg:text-base">{formatPdfName(pdf.file_name)}</span>
                     </a>
                   </div>
                 ))}
