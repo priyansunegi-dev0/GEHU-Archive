@@ -173,7 +173,7 @@ export function Home() {
                 {pdfs.map((pdf: PDF) => (
                   <div key={pdf.id} className="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-zinc-950/40 transition-colors">
                     <FileText className="h-6 w-6 text-red-500 flex-shrink-0" />
-                    <span className="flex-1 text-black dark:text-white truncate font-medium text-sm md:text-base">{pdf.file_name}</span>
+                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="flex-1 text-black dark:text-white truncate font-medium text-sm md:text-base">{pdf.file_name}</span>
                     <span className="hidden sm:block w-24 text-right text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
                       {formatFileSize(pdf.file_size)}
                     </span>
