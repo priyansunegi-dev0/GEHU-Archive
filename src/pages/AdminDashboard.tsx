@@ -138,10 +138,9 @@ export function AdminDashboard() {
   };
 
   // ─── Sign out ─────────────────────────────────────────────────
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    setSession(null);
+  const handleSignOut = () => {
     navigate('/pyqs');
+    supabase.auth.signOut().then(() => setSession(null));
   };
 
   // ─── Delete a doubt (and its answers cascade) ─────────────────
@@ -349,18 +348,9 @@ export function AdminDashboard() {
             <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-2">
               Access Denied
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base mb-2">
-              You are signed in as <span className="font-semibold text-black dark:text-white">{user.email}</span>
+            <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base mb-8">
+              This account does not have admin access.
             </p>
-            <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base mb-6">
-              This account does not have admin access. If you believe this is a mistake, please contact:
-            </p>
-            <a
-              href="mailto:workwithpndev0@gmail.com"
-              className="inline-block font-bold text-black dark:text-white hover:underline decoration-2 text-lg mb-8"
-            >
-              workwithpndev0@gmail.com
-            </a>
 
             <button
               onClick={handleSignOut}
