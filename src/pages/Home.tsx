@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SEO } from '@/components/SEO';
-import { FileText, ArrowUp, Eye } from 'lucide-react';
+import { ArrowUp, Eye } from 'lucide-react';
 import type { Folder as FolderType, PDF } from '@/types';
 import manifest from '@/courses-manifest.json';
 
@@ -16,11 +16,15 @@ const FolderImg = ({ name }: { name: string }) => {
 };
 
 const FolderImgLg = () => (
-  <img
-    src="/folder.svg"
-    alt="folder"
-    className="h-8 w-8 mx-auto mb-3 opacity-40"
-  />
+  <img src="/folder.svg" alt="empty" className="h-20 w-20 mx-auto mb-4 opacity-40" />
+);
+
+const PdfIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64" className="h-8 w-8 sm:h-9 sm:w-9 flex-shrink-0">
+    <path d="M36 0H8C5.8 0 4 1.8 4 4v56c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4V16L36 0z" fill="#E53935"/>
+    <path d="M36 0v12c0 2.2 1.8 4 4 4h12L36 0z" fill="#EF9A9A"/>
+    <text x="28" y="46" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial, sans-serif">PDF</text>
+  </svg>
 );
 
 interface BreadcrumbItem {
@@ -172,7 +176,7 @@ export function Home() {
               <div className="mt-3 border border-zinc-300 dark:border-zinc-700 rounded-xl overflow-hidden bg-white dark:bg-black divide-y divide-gray-100 dark:divide-zinc-900">
                 {pdfs.map((pdf: PDF) => (
                   <div key={pdf.id} className="px-6 py-4 flex items-center gap-4 hover:bg-gray-50 dark:hover:bg-zinc-950/40 transition-colors">
-                    <FileText className="h-6 w-6 text-red-500 flex-shrink-0" />
+                    <PdfIcon />
                     <span style={{ fontFamily: "'Roboto', sans-serif" }} className="flex-1 text-black dark:text-white truncate font-medium text-sm md:text-base">{pdf.file_name}</span>
                     <span className="hidden sm:block w-24 text-right text-sm text-gray-500 dark:text-gray-400 flex-shrink-0">
                       {formatFileSize(pdf.file_size)}
@@ -220,4 +224,3 @@ export function Home() {
     </main>
   );
 }
-
