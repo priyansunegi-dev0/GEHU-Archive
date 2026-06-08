@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 
-import { FileText, MessageSquare, Archive, Mail } from 'lucide-react';
+import { MessageSquare, Archive } from 'lucide-react';
 import { Separator } from "@/components/ui/separator"
 import { Link } from "react-router-dom"
 
@@ -32,11 +32,8 @@ const socialLinks: SocialLink[] = [
 ];
 
 const quickLinks = [
-  
-  { label: "Contribute", href: "/pyqs/contribute", icon: FileText, isExternal: false },
   { label: "About", href: "/pyqs/about", icon: Archive, isExternal: false },
   { label: "Doubts", href: "/pyqs/doubts", icon: MessageSquare, isExternal: false },
-  { label: "Contact", href: "mailto:supportgoeazy@gmail.com", icon: Mail, isExternal: true },
 ]
 
 export function Footer() {

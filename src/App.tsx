@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/sonner"
 const Home = lazy(() => import("@/pages/Home").then(m => ({ default: m.Home })))
 const Doubts = lazy(() => import("@/pages/Doubts").then(m => ({ default: m.Doubts })))
 const About = lazy(() => import("@/pages/About").then(m => ({ default: m.About })))
-const ContributePage = lazy(() => import("@/pages/ContributePage").then(m => ({ default: m.ContributePage })))
+// const ContributePage = lazy(() => import("@/pages/ContributePage").then(m => ({ default: m.ContributePage })))
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard").then(m => ({ default: m.AdminDashboard })))
 
 export function App() {
@@ -82,15 +82,7 @@ export function App() {
           />
           <Route
             path="/pyqs/contribute"
-            element={
-              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
-                <Header />
-                <div className="flex-grow">
-                  <ContributePage />
-                </div>
-                <Footer />
-              </div>
-            }
+            element={<Navigate to="/pyqs" replace />}
           />
           <Route
             path="/admin"

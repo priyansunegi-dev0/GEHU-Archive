@@ -34,19 +34,14 @@ export function Header() {
             >
               Doubts
             </Link>
-            <Link
-              to="/pyqs/contribute"
-              className="text-lg font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-            >
-              Contribute
-            </Link>
+
 
             <div className="flex items-center gap-2">
               {/* Dark Mode Toggle (Icon Only) */}
               {mounted && (
                 <button
                    onClick={toggleTheme}
-                   className="p-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                   className="p-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                    aria-label="Toggle dark mode"
                 >
                   {theme === "light" ? (
@@ -65,7 +60,7 @@ export function Header() {
             {mounted && (
               <button
                 onClick={toggleTheme}
-                className="p-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="p-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                 aria-label="Toggle dark mode"
               >
                 {theme === "light" ? (
@@ -99,13 +94,7 @@ export function Header() {
             >
               Doubts
             </Link>
-            <Link
-              to="/pyqs/contribute"
-              onClick={() => setMenuOpen(false)}
-              className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
-            >
-              Contribute
-            </Link>
+
           </nav>
         </div>
       )}
