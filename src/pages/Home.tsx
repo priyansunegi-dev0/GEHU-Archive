@@ -127,8 +127,7 @@ export function Home() {
   const openFolder = (folder: FolderType) => {
     setCurrentFolder(folder);
     setBreadcrumb(prev => [...prev, { id: folder.id, name: folder.name }]);
-    // Scroll to top when opening a folder
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   const navigateBreadcrumb = (index: number) => {
@@ -141,6 +140,7 @@ export function Home() {
     } else {
       setCurrentFolder(null);
     }
+    window.scrollTo(0, 0);
   };
 
   const goUpOneLevel = () => {
