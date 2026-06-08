@@ -106,7 +106,7 @@ export function Home() {
       <SEO page="home" />
 
       {/* Top Header Section with Breadcrumb */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <nav className="flex items-center gap-1 text-base md:text-lg flex-wrap">
           {currentFolder && (
             <ArrowUp className="h-5 w-5 cursor-pointer mr-2" onClick={goUpOneLevel} />
