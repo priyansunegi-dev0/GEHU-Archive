@@ -89,10 +89,9 @@ export function App() {
             element={
               <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
                 <Header />
-                <div className="flex-grow">
+                <div className="flex-grow pb-10">
                   <AdminDashboard />
                 </div>
-                <Footer />
               </div>
             }
           />
