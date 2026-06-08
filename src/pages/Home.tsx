@@ -27,18 +27,56 @@ const PdfIcon = () => (
   </svg>
 );
 
-// Format PDF filename: subject code & single-letter sets stay UPPERCASE, rest lowercase
-const formatPdfName = (fileName: string): string => {
+// Format PDF filename into title + date
+// e.g. bp105_t_sessional_1_2025_nov.pdf → { title: "BP105 - T • Sessional 1", date: "2025 Nov" }
+const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+const formatPdfName = (fileName: string): { title: string; date: string } => {
   const name = fileName.replace(/\.pdf$/i, '');
   const parts = name.split('_');
-  return parts.map((part, i) => {
-    // First part is always the subject code (e.g. bp105, tcs303) → uppercase
-    if (i === 0) return part.toUpperCase();
-    // Single character tokens are set letters (e.g. t, a, b) → uppercase
-    if (part.length === 1 && /[a-zA-Z]/.test(part)) return part.toUpperCase();
-    // Everything else → lowercase
-    return part.toLowerCase();
-  }).join(' ');
+
+  const code = parts[0].toUpperCase();
+  const titleParts: string[] = [];
+  const dateParts: string[] = [];
+  let reachedDate = false;
+  let hasSet = false;
+
+  for (let i = 1; i < parts.length; i++) {
+    const p = parts[i].toLowerCase();
+    // Check if this is a year (4-digit number)
+    if (/^\d{4}$/.test(p)) {
+      reachedDate = true;
+      dateParts.push(p);
+    } else if (reachedDate) {
+      // After year, everything is date (month, day, etc.)
+      dateParts.push(months.includes(p) ? p.charAt(0).toUpperCase() + p.slice(1) : p);
+    } else if (p.length === 1 && /[a-z]/.test(p)) {
+      // Single letter = set letter
+      hasSet = true;
+      titleParts.push(p.toUpperCase());
+    } else if (/^\d{1,2}$/.test(p)) {
+      // 1-2 digit number (e.g. sessional number)
+      titleParts.push(p);
+    } else {
+      // Exam type word - capitalize
+      titleParts.push(p.charAt(0).toUpperCase() + p.slice(1));
+    }
+  }
+
+  // Build formatted title: CODE - SET • Type Number
+  let title = code;
+  if (titleParts.length > 0) {
+    if (hasSet) {
+      // First part after code is the set letter
+      const setIdx = titleParts.findIndex(t => t.length === 1 && /[A-Z]/.test(t));
+      const setLetter = titleParts[setIdx];
+      const rest = titleParts.filter((_, idx) => idx !== setIdx);
+      title += ` - ${setLetter} • ${rest.join(' ')}`;
+    } else {
+      title += ` - ${titleParts.join(' ')}`;
+    }
+  }
+
+  return { title, date: dateParts.join(' ') };
 };
 
 interface BreadcrumbItem {
@@ -197,7 +235,12 @@ export function Home() {
                       className="flex w-full items-center gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                     >
                       <PdfIcon />
-                      <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-xs md:text-sm lg:text-base">{formatPdfName(pdf.file_name)}</span>
+                      <div style={{ fontFamily: "'Roboto', sans-serif" }}>
+                        <span className="text-xs md:text-sm lg:text-base block">{formatPdfName(pdf.file_name).title}</span>
+                        {formatPdfName(pdf.file_name).date && (
+                          <span className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 block mt-0.5">{formatPdfName(pdf.file_name).date}</span>
+                        )}
+                      </div>
                     </a>
                   </div>
                 ))}
