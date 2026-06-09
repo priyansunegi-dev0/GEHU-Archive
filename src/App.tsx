@@ -11,16 +11,68 @@ const About = lazy(() => import("@/pages/About").then(m => ({ default: m.About }
 // const ContributePage = lazy(() => import("@/pages/ContributePage").then(m => ({ default: m.ContributePage })))
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard").then(m => ({ default: m.AdminDashboard })))
 
+const PageSkeleton = () => (
+  <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white animate-pulse">
+    {/* Header Skeleton */}
+    <header className="sticky top-0 z-50 bg-white dark:bg-black border-b border-gray-200 dark:border-zinc-800">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 bg-zinc-200 dark:bg-zinc-800 rounded-full" />
+            <div className="h-5 bg-zinc-200 dark:bg-zinc-800 rounded w-28 sm:w-36" />
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden md:block h-5 bg-zinc-200 dark:bg-zinc-800 rounded w-16" />
+            <div className="h-8 w-8 bg-zinc-200 dark:bg-zinc-800 rounded-lg" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    {/* Main Content Skeleton */}
+    <main className="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="flex items-center gap-2 mb-6">
+        <div className="h-6 bg-zinc-200 dark:bg-zinc-800 rounded w-16" />
+        <span className="text-zinc-300 dark:text-zinc-700">/</span>
+        <div className="h-6 bg-zinc-200 dark:bg-zinc-800 rounded w-20" />
+      </div>
+
+      <div className="flex flex-col mt-4 divide-y divide-zinc-200 dark:divide-zinc-800 border-t border-zinc-200 dark:border-zinc-800">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="py-4 flex items-center gap-3">
+            <div className="h-8 w-8 sm:h-10 sm:w-10 bg-zinc-200 dark:bg-zinc-800 rounded-lg flex-shrink-0" />
+            <div className="h-4 bg-zinc-200 dark:bg-zinc-800 rounded w-1/4 sm:w-1/3" />
+          </div>
+        ))}
+      </div>
+    </main>
+
+    {/* Footer Skeleton */}
+    <footer className="bg-zinc-100 dark:bg-[#111111] border-t border-zinc-200 dark:border-zinc-800 mt-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:col-span-2 space-y-3">
+            <div className="h-5 bg-zinc-200 dark:bg-zinc-800 rounded w-32" />
+            <div className="h-4 bg-zinc-200 dark:bg-zinc-800 rounded w-48" />
+            <div className="h-12 bg-zinc-200 dark:bg-zinc-800 rounded max-w-xl w-full" />
+          </div>
+          <div className="space-y-3">
+            <div className="h-5 bg-zinc-200 dark:bg-zinc-800 rounded w-24" />
+            <div className="h-4 bg-zinc-200 dark:bg-zinc-800 rounded w-16" />
+            <div className="h-4 bg-zinc-200 dark:bg-zinc-800 rounded w-20" />
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+);
+
 export function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <Toaster />
       <Router>
-        <Suspense fallback={
-          <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
-            <div className="h-8 w-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
-          </div>
-        }>
+        <Suspense fallback={<PageSkeleton />}>
           <Routes>
           {/* Redirect root based on domain (e.g. doubts.in-gehu.in redirects to /pyqs/doubts) */}
           <Route
