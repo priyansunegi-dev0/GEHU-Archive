@@ -1,9 +1,10 @@
 import { useTheme } from "next-themes"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { Moon, Sun, Menu, X } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export function Header() {
+  const { pathname } = useLocation()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -28,12 +29,22 @@ export function Header() {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link
-              to="/pyqs/doubts"
-              className="text-lg font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-            >
-              Doubts
-            </Link>
+            {(pathname !== "/pyqs" && pathname !== "/") && (
+              <Link
+                to="/pyqs"
+                className="text-lg font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                PYQs
+              </Link>
+            )}
+            {pathname !== "/pyqs/doubts" && (
+              <Link
+                to="/pyqs/doubts"
+                className="text-lg font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                Doubts
+              </Link>
+            )}
 
 
             <div className="flex items-center gap-2">
@@ -87,14 +98,24 @@ export function Header() {
       {menuOpen && (
         <div className="absolute right-2 top-[60px] z-50 w-48 rounded-xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-2 shadow-xl md:hidden">
           <nav className="flex flex-col gap-1">
-            <Link
-              to="/pyqs/doubts"
-              onClick={() => setMenuOpen(false)}
-              className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
-            >
-              Doubts
-            </Link>
-
+            {(pathname !== "/pyqs" && pathname !== "/") && (
+              <Link
+                to="/pyqs"
+                onClick={() => setMenuOpen(false)}
+                className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
+              >
+                PYQs
+              </Link>
+            )}
+            {pathname !== "/pyqs/doubts" && (
+              <Link
+                to="/pyqs/doubts"
+                onClick={() => setMenuOpen(false)}
+                className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
+              >
+                Doubts
+              </Link>
+            )}
           </nav>
         </div>
       )}

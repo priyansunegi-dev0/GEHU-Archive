@@ -256,7 +256,7 @@ export function Home() {
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <SEO page="home" />
 
-      <AdBanner slot="2605579668" />
+      {!currentFolder && <AdBanner slot="2605579668" />}
 
       {/* Top Header Section with Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
