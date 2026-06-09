@@ -11,12 +11,13 @@ const FolderImg = ({ name }: { name: string }) => {
       src={isSpecial ? "/folder-special.svg" : "/folder.webp"}
       alt="folder"
       className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0"
+      fetchPriority="high"
     />
   );
 };
 
 const FolderImgLg = () => (
-  <img src="/folder.webp" alt="empty" className="h-20 w-20 mx-auto mb-4 opacity-40" />
+  <img src="/folder.webp" alt="empty" className="h-20 w-20 mx-auto mb-4 opacity-40" fetchPriority="high" />
 );
 
 const PdfIcon = () => (
