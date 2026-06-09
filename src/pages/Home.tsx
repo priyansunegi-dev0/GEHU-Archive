@@ -8,7 +8,7 @@ const FolderImg = ({ name }: { name: string }) => {
   const isSpecial = name.toLowerCase() === "others" || name.toLowerCase() === "old";
   return (
     <img
-      src={isSpecial ? "/folder-special.svg" : "/folder.svg"}
+      src={isSpecial ? "/folder-special.svg" : "/folder.webp"}
       alt="folder"
       className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0"
     />
@@ -16,7 +16,7 @@ const FolderImg = ({ name }: { name: string }) => {
 };
 
 const FolderImgLg = () => (
-  <img src="/folder.svg" alt="empty" className="h-20 w-20 mx-auto mb-4 opacity-40" />
+  <img src="/folder.webp" alt="empty" className="h-20 w-20 mx-auto mb-4 opacity-40" />
 );
 
 const PdfIcon = () => (
