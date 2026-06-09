@@ -11,7 +11,7 @@ interface AdBannerProps {
 export function AdBanner({
   slot,
   style = { display: 'block', width: '100%' },
-  className = "w-full max-w-3xl mx-auto my-4 overflow-hidden flex justify-center",
+  className = "w-full my-4 overflow-hidden flex justify-center",
   format = "auto",
   responsive = "true"
 }: AdBannerProps) {

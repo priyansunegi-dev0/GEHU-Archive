@@ -357,7 +357,7 @@ export function Home() {
 
           <AdBanner
             slot="5110950352"
-            className="w-full max-w-xl mx-auto mt-8 overflow-hidden flex justify-center"
+            className="w-full mt-8 overflow-hidden flex justify-center"
           />
         </>
       )}
