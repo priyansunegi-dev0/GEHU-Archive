@@ -281,7 +281,7 @@ export function AdminDashboard() {
   // ─── Loading state ────────────────────────────────────────────
   if (loading || isNavigatingAway) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
+      <main className="min-h-[60vh] flex items-center justify-center bg-white dark:bg-black">
         <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
       </main>
     );
@@ -290,7 +290,7 @@ export function AdminDashboard() {
   // ─── Not authenticated → Sign-in screen ───────────────────────
   if (!session) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-white dark:bg-black px-4">
+      <main className="flex flex-col items-center justify-start pt-6 sm:pt-10 bg-white dark:bg-black px-4">
         <SEO page="admin" />
         <div className="w-full max-w-md">
           <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 sm:p-10 shadow-lg text-center">
@@ -328,7 +328,7 @@ export function AdminDashboard() {
 
   if (checkingAdmin) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-white dark:bg-black">
+      <main className="min-h-[60vh] flex items-center justify-center bg-white dark:bg-black">
         <Loader2 className="h-8 w-8 animate-spin text-zinc-500" />
       </main>
     );
@@ -339,7 +339,7 @@ export function AdminDashboard() {
   // ─── Access Denied screen ─────────────────────────────────────
   if (!isAdmin) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-white dark:bg-black px-4">
+      <main className="flex flex-col items-center justify-start pt-6 sm:pt-10 bg-white dark:bg-black px-4">
         <SEO page="admin" />
         <div className="w-full max-w-md">
           <div className="bg-white dark:bg-zinc-950 border border-red-200 dark:border-red-900 rounded-3xl p-8 sm:p-10 shadow-lg text-center">

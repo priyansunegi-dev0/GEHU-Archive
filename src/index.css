@@ -18,7 +18,6 @@
 @custom-variant dark (&:is(.dark *));
 
 html {
-  scroll-behavior: smooth;
   font-family: 'Aurelia Emiko', sans-serif;
 }
 

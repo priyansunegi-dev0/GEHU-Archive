@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom"
 import { ThemeProvider } from "next-themes"
-import { lazy, Suspense } from "react"
+import { lazy, Suspense, useEffect } from "react"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Toaster } from "@/components/ui/sonner"
@@ -67,11 +67,41 @@ const PageSkeleton = () => (
   </div>
 );
 
+function ScrollToTop() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    try {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant' as any
+      });
+    } catch (e) {
+      try {
+        window.scrollTo(0, 0);
+      } catch (err) {}
+    }
+    
+    try {
+      document.documentElement.scrollTop = 0;
+    } catch (e) {}
+    try {
+      if (document.body) {
+        document.body.scrollTop = 0;
+      }
+    } catch (e) {}
+  }, [pathname, search]);
+
+  return null;
+}
+
 export function App() {
   return (
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <Toaster />
       <Router>
+        <ScrollToTop />
         <Suspense fallback={<PageSkeleton />}>
           <Routes>
           {/* Redirect root based on domain (e.g. doubts.in-gehu.in redirects to /pyqs/doubts) */}

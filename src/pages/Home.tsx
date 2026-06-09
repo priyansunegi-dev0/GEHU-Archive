@@ -211,7 +211,19 @@ export function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      window.scrollTo({ top: 0, behavior: 'instant' as any });
+      try {
+        window.scrollTo({ top: 0, behavior: 'instant' as any });
+      } catch (e) {
+        window.scrollTo(0, 0);
+      }
+      try {
+        document.documentElement.scrollTop = 0;
+      } catch (e) {}
+      try {
+        if (document.body) {
+          document.body.scrollTop = 0;
+        }
+      } catch (e) {}
     };
     handleScroll();
     const timer = setTimeout(handleScroll, 50);
