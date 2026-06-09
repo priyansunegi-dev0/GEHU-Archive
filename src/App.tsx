@@ -69,7 +69,7 @@ const PageSkeleton = () => (
 
 export function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
       <Toaster />
       <Router>
         <Suspense fallback={<PageSkeleton />}>

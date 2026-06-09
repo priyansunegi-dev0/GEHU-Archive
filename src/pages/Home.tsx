@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SEO } from '@/components/SEO';
+import { AdBanner } from '@/components/AdBanner';
 import { ArrowUp } from 'lucide-react';
 import type { Folder as FolderType, PDF } from '@/types';
 
@@ -10,7 +11,7 @@ const FolderImg = ({ name }: { name: string }) => {
     <img
       src={isSpecial ? "/folder-special.svg" : "/folder.webp"}
       alt="folder"
-      className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0"
+      className="h-9 w-9 sm:h-11 sm:w-11 flex-shrink-0"
       fetchPriority="high"
     />
   );
@@ -243,6 +244,8 @@ export function Home() {
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <SEO page="home" />
 
+      <AdBanner />
+
       {/* Top Header Section with Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <nav className="flex items-center gap-1 text-base md:text-lg flex-wrap">
@@ -292,10 +295,10 @@ export function Home() {
                 <div key={folder.id} className="py-4">
                   <button
                     onClick={() => openFolder(folder)}
-                    className="flex w-full items-center gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                    className="flex w-full items-center gap-4 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <FolderImg name={folder.name} />
-                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-xs md:text-sm lg:text-base">
+                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-sm md:text-base lg:text-lg">
                       {!currentFolder
                         ? folder.name.toUpperCase()
                         : (folder.name.toUpperCase() === "OTHERS" || folder.name.toUpperCase() === "OLD")
