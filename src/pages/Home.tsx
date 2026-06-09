@@ -208,9 +208,17 @@ export function Home() {
     document.title = `${path} | ${campusSuffix}`;
   }, [breadcrumb]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      window.scrollTo({ top: 0, behavior: 'instant' as any });
+    };
+    handleScroll();
+    const timer = setTimeout(handleScroll, 50);
+    return () => clearTimeout(timer);
+  }, [folderId]);
+
   const openFolder = (folder: FolderType) => {
     setSearchParams({ f: folder.id });
-    window.scrollTo(0, 0);
   };
 
   const navigateBreadcrumb = (index: number) => {
@@ -220,7 +228,6 @@ export function Home() {
     } else {
       setSearchParams({});
     }
-    window.scrollTo(0, 0);
   };
 
   const goUpOneLevel = () => {
