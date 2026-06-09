@@ -1,6 +1,20 @@
 import { useEffect } from 'react';
 
-export function AdBanner() {
+interface AdBannerProps {
+  slot: string;
+  style?: React.CSSProperties;
+  className?: string;
+  format?: string;
+  responsive?: string;
+}
+
+export function AdBanner({
+  slot,
+  style = { display: 'block', width: '100%' },
+  className = "w-full my-4 overflow-hidden flex justify-center",
+  format = "auto",
+  responsive = "true"
+}: AdBannerProps) {
   useEffect(() => {
     try {
       // @ts-ignore
@@ -8,17 +22,17 @@ export function AdBanner() {
     } catch (err) {
       console.error("AdSense error: ", err);
     }
-  }, []);
+  }, [slot]);
 
   return (
-    <div className="w-full my-4 overflow-hidden flex justify-center">
+    <div className={className}>
       <ins
         className="adsbygoogle"
-        style={{ display: 'block', width: '100%' }}
+        style={style}
         data-ad-client="ca-pub-7929053030272353"
-        data-ad-slot="2605579668"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
+        data-ad-slot={slot}
+        data-ad-format={format}
+        data-full-width-responsive={responsive}
       />
     </div>
   );

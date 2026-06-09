@@ -244,7 +244,11 @@ export function Home() {
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <SEO page="home" />
 
-      <AdBanner />
+      <AdBanner
+        slot="2605579668"
+        style={{ display: 'block', width: '100%', height: '80px' }}
+        className="w-full my-4 overflow-hidden flex justify-center max-h-[80px]"
+      />
 
       {/* Top Header Section with Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
@@ -337,22 +341,30 @@ export function Home() {
 
       {/* WhatsApp Community Section */}
       {!currentFolder && !loading && (
-        <div className="mt-16 space-y-3">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white">
-            Join Whatsapp Community | 1300+ students
-          </h3>
-          <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-zinc-400">
-            Join{" "}
-            <a
-              href="https://chat.whatsapp.com/CLCyjRtMnXWKwRpzh3TqFV"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-black dark:text-white font-bold underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
-            >
-              GRAPHIANS
-            </a>
-          </p>
-        </div>
+        <>
+          <div className="mt-16 space-y-3">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white">
+              Join Whatsapp Community | 1300+ students
+            </h3>
+            <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-zinc-400">
+              Join{" "}
+              <a
+                href="https://chat.whatsapp.com/CLCyjRtMnXWKwRpzh3TqFV"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black dark:text-white font-bold underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
+              >
+                GRAPHIANS
+              </a>
+            </p>
+          </div>
+
+          <AdBanner
+            slot="5110950352"
+            style={{ display: 'block', width: '100%', height: '80px' }}
+            className="w-full mt-8 overflow-hidden flex justify-center max-h-[80px]"
+          />
+        </>
       )}
 
     </main>
