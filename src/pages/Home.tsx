@@ -244,11 +244,7 @@ export function Home() {
     <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <SEO page="home" />
 
-      <AdBanner
-        slot="2605579668"
-        style={{ display: 'block', width: '100%', height: '80px' }}
-        className="w-full my-4 overflow-hidden flex justify-center max-h-[80px]"
-      />
+      <AdBanner slot="2605579668" />
 
       {/* Top Header Section with Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
@@ -361,8 +357,7 @@ export function Home() {
 
           <AdBanner
             slot="5110950352"
-            style={{ display: 'block', width: '100%', height: '80px' }}
-            className="w-full mt-8 overflow-hidden flex justify-center max-h-[80px]"
+            className="w-full mt-8 overflow-hidden flex justify-center"
           />
         </>
       )}
