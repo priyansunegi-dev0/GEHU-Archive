@@ -8,7 +8,9 @@ import { Toaster } from "@/components/ui/sonner"
 const Home = lazy(() => import("@/pages/Home").then(m => ({ default: m.Home })))
 const Doubts = lazy(() => import("@/pages/Doubts").then(m => ({ default: m.Doubts })))
 const About = lazy(() => import("@/pages/About").then(m => ({ default: m.About })))
-// const ContributePage = lazy(() => import("@/pages/ContributePage").then(m => ({ default: m.ContributePage })))
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy").then(m => ({ default: m.PrivacyPolicy })))
+const Disclaimer = lazy(() => import("@/pages/Disclaimer").then(m => ({ default: m.Disclaimer })))
+const Contact = lazy(() => import("@/pages/Contact").then(m => ({ default: m.Contact })))
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard").then(m => ({ default: m.AdminDashboard })))
 
 const PageSkeleton = () => (
@@ -118,8 +120,10 @@ export function App() {
 
           {/* Redirect legacy paths to new nested paths */}
           <Route path="/doubts" element={<Navigate to="/pyqs/doubts" replace />} />
-          <Route path="/contribute" element={<Navigate to="/pyqs/contribute" replace />} />
           <Route path="/about" element={<Navigate to="/pyqs/about" replace />} />
+          <Route path="/privacy" element={<Navigate to="/pyqs/privacy" replace />} />
+          <Route path="/disclaimer" element={<Navigate to="/pyqs/disclaimer" replace />} />
+          <Route path="/contact" element={<Navigate to="/pyqs/contact" replace />} />
 
           {/* Public routes with header and footer */}
           <Route
@@ -163,9 +167,42 @@ export function App() {
             }
           />
           <Route
-            path="/pyqs/contribute"
-            element={<Navigate to="/pyqs" replace />}
+            path="/pyqs/privacy"
+            element={
+              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
+                <Header />
+                <div className="flex-grow">
+                  <PrivacyPolicy />
+                </div>
+                <Footer />
+              </div>
+            }
           />
+          <Route
+            path="/pyqs/disclaimer"
+            element={
+              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
+                <Header />
+                <div className="flex-grow">
+                  <Disclaimer />
+                </div>
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/pyqs/contact"
+            element={
+              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
+                <Header />
+                <div className="flex-grow">
+                  <Contact />
+                </div>
+                <Footer />
+              </div>
+            }
+          />
+
           <Route
             path="/admin"
             element={

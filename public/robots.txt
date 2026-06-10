@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /contribute
+Disallow: /pyqs/contribute
+Disallow: /admin
 
 Sitemap: https://dehradun.in-gehu.in/sitemap.xml
 Sitemap: https://doubts.in-gehu.in/sitemap.xml

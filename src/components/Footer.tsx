@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 
-import { MessageSquare, Archive } from 'lucide-react';
+import { MessageSquare, Archive, Shield, AlertTriangle, Mail } from 'lucide-react';
 import { Separator } from "@/components/ui/separator"
 import { Link } from "react-router-dom"
 
@@ -34,6 +34,9 @@ const socialLinks: SocialLink[] = [
 const quickLinks = [
   { label: "About", href: "/pyqs/about", icon: Archive, isExternal: false },
   { label: "Doubts", href: "/pyqs/doubts", icon: MessageSquare, isExternal: false },
+  { label: "Privacy Policy", href: "/pyqs/privacy", icon: Shield, isExternal: false },
+  { label: "Disclaimer", href: "/pyqs/disclaimer", icon: AlertTriangle, isExternal: false },
+  { label: "Contact Us", href: "/pyqs/contact", icon: Mail, isExternal: false },
 ]
 
 export function Footer() {

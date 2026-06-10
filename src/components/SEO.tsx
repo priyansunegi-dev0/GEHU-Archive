@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 interface SEOProps {
-  page: 'home' | 'doubts' | 'contribute' | 'about' | 'admin';
+  page: 'home' | 'doubts' | 'contribute' | 'about' | 'admin' | 'privacy' | 'disclaimer' | 'contact';
 }
 
 export function SEO({ page }: SEOProps) {
@@ -13,24 +13,24 @@ export function SEO({ page }: SEOProps) {
     // 1. Detect Campus / Subdomain details
     let campusName = "GEHU Archive";
     let titleSuffix = "GEHU PYQs Archive";
-    let baseKeywords = "gehu pyqs, geu pyqs, graphic era university pyqs, graphic era hill university pyqs, gehu previous year papers";
+    let baseKeywords = "gehu pyqs - PYQs Archive, geu pyqs, gehu pyqs archive, pyqs gehu, gehu archive, gehu previous year papers, graphic era university pyqs, graphic era hill university pyqs";
     
     if (hostname.includes("dehradun")) {
       campusName = "Dehradun Campus";
       titleSuffix = "Dehradun Campus";
-      baseKeywords += ", gehu dehradun pyqs, graphic era dehradun pyqs, dehradun campus pyqs, geu dehradun papers";
+      baseKeywords += ", gehu dehradun pyqs, graphic era dehradun pyqs, dehradun campus pyqs, geu dehradun papers, dehradun gehu pyqs, pyqs gehu dehradun";
     } else if (hostname.includes("haldwani")) {
       campusName = "Haldwani Campus";
       titleSuffix = "Haldwani Campus";
-      baseKeywords += ", gehu haldwani pyqs, graphic era haldwani pyqs, haldwani campus pyqs, geu haldwani papers";
+      baseKeywords += ", gehu haldwani pyqs, graphic era haldwani pyqs, haldwani campus pyqs, geu haldwani papers, haldwani gehu pyqs, pyqs gehu haldwani";
     } else if (hostname.includes("bhimtal")) {
       campusName = "Bhimtal Campus";
       titleSuffix = "Bhimtal Campus";
-      baseKeywords += ", gehu bhimtal pyqs, graphic era bhimtal pyqs, bhimtal campus pyqs, geu bhimtal papers";
+      baseKeywords += ", gehu bhimtal pyqs, graphic era bhimtal pyqs, bhimtal campus pyqs, geu bhimtal papers, bhimtal gehu pyqs, pyqs gehu bhimtal";
     } else if (hostname.includes("doubts")) {
       campusName = "Doubts Portal";
       titleSuffix = "Doubts Portal";
-      baseKeywords += ", gehu doubts, geu doubts solved, graphic era doubts forum, ask academic queries gehu";
+      baseKeywords += ", gehu doubts, geu doubts solved, doubts gehu, doubts pyqs gehu, graphic era doubts forum, ask academic queries gehu";
     }
 
     // 2. Map Page Meta Info
@@ -63,6 +63,21 @@ export function SEO({ page }: SEOProps) {
         pageTitle = `Admin Access | ${titleSuffix}`;
         pageDescription = `Secure dashboard login for GEHU Archive administration.`;
         pageKeywords = `${baseKeywords}, admin access portal`;
+        break;
+      case 'privacy':
+        pageTitle = `Privacy Policy | ${titleSuffix}`;
+        pageDescription = `Privacy Policy for GEHU Archive. Read how we collect and protect your data.`;
+        pageKeywords = `${baseKeywords}, privacy policy`;
+        break;
+      case 'disclaimer':
+        pageTitle = `Disclaimer | ${titleSuffix}`;
+        pageDescription = `Disclaimer for GEHU Archive. Student-driven portal with no official university affiliation.`;
+        pageKeywords = `${baseKeywords}, disclaimer`;
+        break;
+      case 'contact':
+        pageTitle = `Contact Us | ${titleSuffix}`;
+        pageDescription = `Get in touch with the student maintainers of GEHU Archive. Feedback, queries, and reports.`;
+        pageKeywords = `${baseKeywords}, contact us`;
         break;
     }
 

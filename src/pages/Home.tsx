@@ -321,6 +321,30 @@ export function Home() {
                 </div>
               ))}
             </div>
+            {currentFolder?.id === 'BTECH-Year 1' && (
+              <div className="py-6 border-t border-zinc-200 dark:border-zinc-800 mt-2 flex flex-col gap-4">
+                <div>
+                  <a
+                    href="https://drive.google.com/drive/folders/1_ebYoj01H5qGAw5cMW_WDzwf7lymLkbW"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-sm md:text-base lg:text-lg font-bold text-black dark:text-white underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
+                  >
+                    Computer Science Study Material
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="https://drive.google.com/drive/folders/1pZ2F8_CXIqQb9NcTz5JmxIZbEtwHPLoW"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-sm md:text-base lg:text-lg font-bold text-black dark:text-white underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
+                  >
+                    Engineering Physics
+                  </a>
+                </div>
+              </div>
+            )}
             {pdfs.length > 0 && (
               <div className="flex flex-col divide-y divide-zinc-200 dark:divide-zinc-800">
                 {pdfs.map((pdf: PDF) => (
