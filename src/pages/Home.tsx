@@ -253,7 +253,7 @@ export function Home() {
   const isEmpty = !loading && subFolders.length === 0 && pdfs.length === 0;
 
   return (
-    <main className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 py-10">
+    <main className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 py-10">
       <SEO page="home" />
 
       {!currentFolder && <AdBanner slot="2605579668" />}
@@ -310,7 +310,7 @@ export function Home() {
                     className="flex w-full items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <FolderImg name={folder.name} />
-                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-base sm:text-lg md:text-xl font-semibold">
+                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-base sm:text-lg md:text-xl">
                       {!currentFolder
                         ? folder.name.toUpperCase()
                         : (folder.name.toUpperCase() === "OTHERS" || folder.name.toUpperCase() === "OLD")
@@ -357,7 +357,7 @@ export function Home() {
                     >
                       <PdfIcon />
                       <div style={{ fontFamily: "'Roboto', sans-serif" }}>
-                        <span className="text-sm sm:text-base md:text-lg block font-semibold">{formatPdfName(pdf.file_name).title}</span>
+                        <span className="text-sm sm:text-base md:text-lg block">{formatPdfName(pdf.file_name).title}</span>
                         {formatPdfName(pdf.file_name).date && (
                           <span className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 block mt-0.5">{formatPdfName(pdf.file_name).date}</span>
                         )}
