@@ -11,8 +11,8 @@ export function SEO({ page }: SEOProps) {
     const hostname = window.location.hostname;
     
     // 1. Detect Campus / Subdomain details
-    let campusName = "GEHU Archive";
-    let titleSuffix = "GEHU PYQs Archive";
+    let campusName = "PYQs Archive";
+    let titleSuffix = "PYQs Archive";
     let baseKeywords = "gehu pyqs - PYQs Archive, geu pyqs, gehu pyqs archive, pyqs gehu, gehu archive, gehu previous year papers, graphic era university pyqs, graphic era hill university pyqs";
     
     if (hostname.includes("dehradun")) {
