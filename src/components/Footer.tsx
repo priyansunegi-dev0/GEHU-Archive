@@ -59,7 +59,7 @@ export function Footer() {
       transition={{ duration: 0.6 }}
       className="bg-zinc-100 dark:bg-[#111111] text-zinc-900 dark:text-zinc-100 border-t border-zinc-200 dark:border-zinc-800 mt-8"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14">
+      <div className="mx-auto max-w-6xl px-6 sm:px-10 py-14">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           

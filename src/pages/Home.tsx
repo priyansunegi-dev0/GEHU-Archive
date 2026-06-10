@@ -11,7 +11,7 @@ const FolderImg = ({ name }: { name: string }) => {
     <img
       src={isSpecial ? "/folder-special.svg" : "/folder.webp"}
       alt="folder"
-      className="h-9 w-9 sm:h-11 sm:w-11 flex-shrink-0"
+      className="h-11 w-11 sm:h-14 sm:w-14 flex-shrink-0"
       fetchPriority="high"
     />
   );
@@ -22,7 +22,7 @@ const FolderImgLg = () => (
 );
 
 const PdfIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64" className="h-8 w-8 sm:h-9 sm:w-9 flex-shrink-0">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64" className="h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0">
     <path d="M36 0H8C5.8 0 4 1.8 4 4v56c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4V16L36 0z" fill="#E53935"/>
     <path d="M36 0v12c0 2.2 1.8 4 4 4h12L36 0z" fill="#EF9A9A"/>
     <text x="28" y="46" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial, sans-serif">PDF</text>
@@ -253,7 +253,7 @@ export function Home() {
   const isEmpty = !loading && subFolders.length === 0 && pdfs.length === 0;
 
   return (
-    <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <main className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 py-10">
       <SEO page="home" />
 
       {!currentFolder && <AdBanner slot="2605579668" />}
@@ -307,10 +307,10 @@ export function Home() {
                 <div key={folder.id} className="py-5">
                   <button
                     onClick={() => openFolder(folder)}
-                    className="flex w-full items-center gap-4 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                    className="flex w-full items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <FolderImg name={folder.name} />
-                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-sm md:text-base lg:text-lg">
+                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-base sm:text-lg md:text-xl font-semibold">
                       {!currentFolder
                         ? folder.name.toUpperCase()
                         : (folder.name.toUpperCase() === "OTHERS" || folder.name.toUpperCase() === "OLD")
@@ -353,11 +353,11 @@ export function Home() {
                       href={pdf.file_path || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex w-full items-center gap-3 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                      className="flex w-full items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                     >
                       <PdfIcon />
                       <div style={{ fontFamily: "'Roboto', sans-serif" }}>
-                        <span className="text-xs md:text-sm lg:text-base block">{formatPdfName(pdf.file_name).title}</span>
+                        <span className="text-sm sm:text-base md:text-lg block font-semibold">{formatPdfName(pdf.file_name).title}</span>
                         {formatPdfName(pdf.file_name).date && (
                           <span className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 block mt-0.5">{formatPdfName(pdf.file_name).date}</span>
                         )}

@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-black border-b border-gray-200 dark:border-zinc-800 relative">
-      <div className="max-w-[1440px] mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           {isDoubtsDomain ? (
