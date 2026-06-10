@@ -63,6 +63,23 @@ export function Header() {
                 Doubts
               </Link>
             )}
+            {pathname !== "/pyqs/about" && (
+              isDoubtsDomain ? (
+                <a
+                  href="https://in-gehu.in/pyqs/about"
+                  className="text-lg font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                >
+                  About
+                </a>
+              ) : (
+                <Link
+                  to="/pyqs/about"
+                  className="text-lg font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                >
+                  About
+                </Link>
+              )
+            )}
 
 
             <div className="flex items-center gap-2">
@@ -143,6 +160,25 @@ export function Header() {
               >
                 Doubts
               </Link>
+            )}
+            {pathname !== "/pyqs/about" && (
+              isDoubtsDomain ? (
+                <a
+                  href="https://in-gehu.in/pyqs/about"
+                  onClick={() => setMenuOpen(false)}
+                  className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
+                >
+                  About
+                </a>
+              ) : (
+                <Link
+                  to="/pyqs/about"
+                  onClick={() => setMenuOpen(false)}
+                  className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
+                >
+                  About
+                </Link>
+              )
             )}
           </nav>
         </div>
