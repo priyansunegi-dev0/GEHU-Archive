@@ -199,14 +199,32 @@ export function Home() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const hostname = window.location.hostname;
-    let campusSuffix = "GEHU PYQs Archive";
-    if (hostname.includes("dehradun")) campusSuffix = "Dehradun Campus";
-    else if (hostname.includes("haldwani")) campusSuffix = "Haldwani Campus";
-    else if (hostname.includes("bhimtal")) campusSuffix = "Bhimtal Campus";
-    else if (hostname.includes("doubts")) campusSuffix = "Doubts Portal";
+    
+    const getSiteTitle = (h: string): string => {
+      if (h.includes("dehradun.in-gehu.in")) return "PYQs Archive - GEHU Dehradun";
+      if (h.includes("bhimtal.in-gehu.in")) return "PYQs Archive - GEHU Bhimtal";
+      if (h.includes("haldwani.in-gehu.in")) return "PYQs Archive - GEHU Haldwani";
+      if (h.includes("geupyqs.in-gehu.in")) return "PYQs Archive - GEU Dehradun";
+      if (h.includes("gehupyqs.in-gehu.in")) return "PYQs Archive - GEHU Dehradun";
+      if (h.includes("doubts.in-gehu.in")) return "DOUBTS - GEHU Dehradun";
+      if (h.includes("in-gehu.in")) return "PYQs Archive - GEHU Dehradun";
+      
+      if (h.includes("bhimtal")) return "PYQs Archive - GEHU Bhimtal";
+      if (h.includes("haldwani")) return "PYQs Archive - GEHU Haldwani";
+      if (h.includes("geupyqs")) return "PYQs Archive - GEU Dehradun";
+      if (h.includes("gehupyqs")) return "PYQs Archive - GEHU Dehradun";
+      if (h.includes("doubts")) return "DOUBTS - GEHU Dehradun";
+      
+      return "PYQs Archive - GEHU Dehradun";
+    };
 
-    const path = breadcrumb.map((item: BreadcrumbItem) => item.name).filter(Boolean).join(' / ');
-    document.title = `${path} | ${campusSuffix}`;
+    const siteTitle = getSiteTitle(hostname);
+    if (breadcrumb.length === 1) {
+      document.title = siteTitle;
+    } else {
+      const path = breadcrumb.map((item: BreadcrumbItem) => item.name).filter(Boolean).join(' / ');
+      document.title = `${path} | ${siteTitle}`;
+    }
   }, [breadcrumb]);
 
   useEffect(() => {
