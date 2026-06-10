@@ -325,7 +325,7 @@ export function Home() {
                 <div key={folder.id} className="py-5">
                   <button
                     onClick={() => openFolder(folder)}
-                    className="flex w-full items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                    className="flex w-full items-center gap-4 text-left text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <FolderImg name={folder.name} />
                     <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-base sm:text-lg md:text-xl">
