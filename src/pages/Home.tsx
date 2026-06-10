@@ -304,7 +304,7 @@ export function Home() {
           <>
             <div className="flex flex-col mt-4 divide-y divide-zinc-200 dark:divide-zinc-800">
               {subFolders.map((folder: FolderType) => (
-                <div key={folder.id} className="py-4">
+                <div key={folder.id} className="py-5">
                   <button
                     onClick={() => openFolder(folder)}
                     className="flex w-full items-center gap-4 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
@@ -348,7 +348,7 @@ export function Home() {
             {pdfs.length > 0 && (
               <div className="flex flex-col divide-y divide-zinc-200 dark:divide-zinc-800">
                 {pdfs.map((pdf: PDF) => (
-                  <div key={pdf.id} className="py-4">
+                  <div key={pdf.id} className="py-5">
                     <a
                       href={pdf.file_path || '#'}
                       target="_blank"
