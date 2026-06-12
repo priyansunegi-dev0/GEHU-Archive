@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface AdBannerProps {
   slot: string;
@@ -15,7 +15,15 @@ export function AdBanner({
   format = "auto",
   responsive = "true"
 }: AdBannerProps) {
+  const insRef = useRef<HTMLModElement>(null);
+
   useEffect(() => {
+    const ins = insRef.current;
+    if (!ins) return;
+
+    // Avoid pushing if ad is already initialized for this element
+    if (ins.getAttribute('data-adsbygoogle-status')) return;
+
     try {
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -27,6 +35,7 @@ export function AdBanner({
   return (
     <div className={className}>
       <ins
+        ref={insRef}
         className="adsbygoogle"
         style={style}
         data-ad-client="ca-pub-7929053030272353"
