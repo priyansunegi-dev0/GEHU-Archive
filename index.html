@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" /></noscript>
 
-    <link rel="preload" href="/folder.webp" as="image" type="image/webp" />
+    <!-- Preconnect for AdSense (reduces LCP delay) -->
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
+
+    <link rel="preload" href="/folder.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
@@ -20,8 +24,6 @@
     <meta name="description" content="GEHU Archive is a student‑driven collection of previous‑year question papers of Graphic Era Hill University, Dehradun Campus. It also hosts a Doubts section where students can ask and answer queries." />
     <meta name="google-site-verification" content="NRFqD6bK78-dqnkurPgIIvop_DdFZUT4zUpHCpSvBgs" />
     <meta name="google-adsense-account" content="ca-pub-7929053030272353">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7929053030272353"
-     crossorigin="anonymous"></script>
     <meta name="keywords" content="gehu pyqs, geu pyqs, gehu pyqs archive, pyqs gehu, gehu archive, gehu previous year papers, graphic era university pyqs, graphic era hill university pyqs, gehu dehradun pyqs, graphic era dehradun pyqs, dehradun campus pyqs, gehu doubts, gehu students" />
     <title>PYQs Archive - Graphic Era</title>
     <meta property="og:title" content="PYQs Archive - Graphic Era" />
@@ -66,5 +68,8 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- AdSense loaded after page content to reduce TBT and improve LCP -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7929053030272353"
+     crossorigin="anonymous"></script>
   </body>
 </html>
