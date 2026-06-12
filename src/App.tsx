@@ -12,6 +12,7 @@ const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy").then(m => ({ de
 const Disclaimer = lazy(() => import("@/pages/Disclaimer").then(m => ({ default: m.Disclaimer })))
 const Contact = lazy(() => import("@/pages/Contact").then(m => ({ default: m.Contact })))
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard").then(m => ({ default: m.AdminDashboard })))
+const NotFound = lazy(() => import("@/pages/NotFound").then(m => ({ default: m.NotFound })))
 
 const PageSkeleton = () => (
   <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white animate-pulse">
@@ -202,8 +203,19 @@ export function App() {
             }
           />
 
-          {/* Catch-all route to redirect invalid paths */}
-          <Route path="*" element={<Navigate to="/pyqs" replace />} />
+          {/* Custom 404 page for invalid paths */}
+          <Route
+            path="*"
+            element={
+              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
+                <Header />
+                <div className="flex-grow">
+                  <NotFound />
+                </div>
+                <Footer />
+              </div>
+            }
+          />
           </Routes>
       </Suspense>
     </Router>

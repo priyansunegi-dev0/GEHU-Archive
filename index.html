@@ -2,7 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Preconnect for Google Fonts (non-render-blocking) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" /></noscript>
+
     <link rel="preload" href="/folder.webp" as="image" type="image/webp" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
@@ -15,17 +22,46 @@
     <meta name="google-adsense-account" content="ca-pub-7929053030272353">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7929053030272353"
      crossorigin="anonymous"></script>
-    <meta name="keywords" content="gehu pyqs, geu pyqs, gehu pyqs archive, pyqs gehu, gehu archive, gehu previous year papers, graphic era university pyqs, graphic era hill university pyqs, gehu dehradun pyqs, graphic era dehradun pyqs, dehradun campus pyqs, gehu haldwani pyqs, gehu bhimtal pyqs" />
+    <meta name="keywords" content="gehu pyqs, geu pyqs, gehu pyqs archive, pyqs gehu, gehu archive, gehu previous year papers, graphic era university pyqs, graphic era hill university pyqs, gehu dehradun pyqs, graphic era dehradun pyqs, dehradun campus pyqs, gehu doubts, gehu students" />
     <title>PYQs Archive - Graphic Era</title>
     <meta property="og:title" content="PYQs Archive - Graphic Era" />
     <meta property="og:description" content="GEHU Archive is a student‑driven collection of previous‑year question papers of Graphic Era Hill University, Dehradun Campus. It also hosts a Doubts section where students can ask and answer queries." />
     <meta property="og:url" content="https://in-gehu.in/pyqs" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/favicons/android-chrome-512x512.png">
+    <meta property="og:image" content="https://in-gehu.in/favicons/android-chrome-512x512.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PYQs Archive - Graphic Era" />
     <meta name="twitter:description" content="GEHU Archive is a student‑driven collection of previous‑year question papers of Graphic Era Hill University, Dehradun Campus. It also hosts a Doubts section where students can ask and answer queries." />
-    <meta name="twitter:image" content="/favicons/android-chrome-512x512.png">
+    <meta name="twitter:image" content="https://in-gehu.in/favicons/android-chrome-512x512.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "PYQs Archive - Graphic Era",
+      "url": "https://in-gehu.in",
+      "description": "GEHU Archive is a student-driven collection of previous-year question papers of Graphic Era Hill University, Dehradun Campus.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://in-gehu.in/pyqs?f={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GEHU Archive",
+        "url": "https://in-gehu.in",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://in-gehu.in/favicons/android-chrome-512x512.png"
+        }
+      }
+    }
+    </script>
+
     <script>
       document.addEventListener('contextmenu', (e) => e.preventDefault());
       document.addEventListener('keydown', (e) => {
