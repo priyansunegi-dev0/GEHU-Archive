@@ -253,6 +253,13 @@ export function Home() {
     <main className="max-w-5xl mx-auto px-8 sm:px-12 lg:px-16 py-10">
       <SEO page="home" />
 
+      {/* SEO H1 - visually hidden, keyword-rich for Google */}
+      {!currentFolder && (
+        <h1 className="sr-only">
+          GEHU PYQs Archive – Previous Year Question Papers for Graphic Era Hill University Students (Dehradun Campus)
+        </h1>
+      )}
+
       {!currentFolder && <AdBanner slot="2605579668" />}
 
       {/* Top Header Section with Breadcrumb */}
@@ -372,9 +379,9 @@ export function Home() {
       {!currentFolder && !loading && (
         <>
           <div className="mt-16 space-y-3">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white">
-              Join Whatsapp Community | 1300+ students
-            </h3>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white">
+              Join Whatsapp Community | 1300+ Students
+            </h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-zinc-400">
               Join{" "}
               <a
