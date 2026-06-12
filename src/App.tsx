@@ -106,17 +106,8 @@ export function App() {
         <ScrollToTop />
         <Suspense fallback={<PageSkeleton />}>
           <Routes>
-          {/* Redirect root based on domain (e.g. doubts.in-gehu.in redirects to /pyqs/doubts) */}
-          <Route
-            path="/"
-            element={
-              typeof window !== 'undefined' && window.location.hostname === 'doubts.in-gehu.in' ? (
-                <Navigate to="/pyqs/doubts" replace />
-              ) : (
-                <Navigate to="/pyqs" replace />
-              )
-            }
-          />
+            {/* Redirect root to /pyqs */}
+          <Route path="/" element={<Navigate to="/pyqs" replace />} />
 
           {/* Redirect legacy paths to new nested paths */}
           <Route path="/doubts" element={<Navigate to="/pyqs/doubts" replace />} />
@@ -129,17 +120,13 @@ export function App() {
           <Route
             path="/pyqs"
             element={
-              typeof window !== 'undefined' && window.location.hostname === 'doubts.in-gehu.in' ? (
-                <Navigate to="/pyqs/doubts" replace />
-              ) : (
-                <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
-                  <Header />
-                  <div className="flex-grow">
-                    <Home />
-                  </div>
-                  <Footer />
+              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
+                <Header />
+                <div className="flex-grow">
+                  <Home />
                 </div>
-              )
+                <Footer />
+              </div>
             }
           />
           <Route
@@ -214,6 +201,9 @@ export function App() {
               </div>
             }
           />
+
+          {/* Catch-all route to redirect invalid paths */}
+          <Route path="*" element={<Navigate to="/pyqs" replace />} />
           </Routes>
       </Suspense>
     </Router>

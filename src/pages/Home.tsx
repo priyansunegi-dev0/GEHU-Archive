@@ -197,28 +197,7 @@ export function Home() {
   const loading = manifestLoading;
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const hostname = window.location.hostname;
-    
-    const getSiteTitle = (h: string): string => {
-      if (h.includes("dehradun.in-gehu.in")) return "PYQs Archive - GEHU Dehradun";
-      if (h.includes("bhimtal.in-gehu.in")) return "PYQs Archive - GEHU Bhimtal";
-      if (h.includes("haldwani.in-gehu.in")) return "PYQs Archive - GEHU Haldwani";
-      if (h.includes("geupyqs.in-gehu.in")) return "PYQs Archive - GEU Dehradun";
-      if (h.includes("gehupyqs.in-gehu.in")) return "PYQs Archive - GEHU Dehradun";
-      if (h.includes("doubts.in-gehu.in")) return "DOUBTS - GEHU Dehradun";
-      if (h.includes("in-gehu.in")) return "PYQs Archive - GEHU Dehradun";
-      
-      if (h.includes("bhimtal")) return "PYQs Archive - GEHU Bhimtal";
-      if (h.includes("haldwani")) return "PYQs Archive - GEHU Haldwani";
-      if (h.includes("geupyqs")) return "PYQs Archive - GEU Dehradun";
-      if (h.includes("gehupyqs")) return "PYQs Archive - GEHU Dehradun";
-      if (h.includes("doubts")) return "DOUBTS - GEHU Dehradun";
-      
-      return "PYQs Archive - GEHU Dehradun";
-    };
-
-    const siteTitle = getSiteTitle(hostname);
+    const siteTitle = "PYQs Archive - Graphic Era";
     if (breadcrumb.length === 1) {
       document.title = siteTitle;
     } else {
