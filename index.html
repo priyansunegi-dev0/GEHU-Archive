@@ -68,8 +68,30 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- AdSense loaded after page content to reduce TBT and improve LCP -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7929053030272353"
-     crossorigin="anonymous"></script>
+    <!-- Lazy load AdSense to improve LCP and TBT -->
+    <script>
+      (function() {
+        var adsLoaded = false;
+        function loadAds() {
+          if (adsLoaded) return;
+          adsLoaded = true;
+          var script = document.createElement('script');
+          script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7929053030272353';
+          script.async = true;
+          script.crossOrigin = 'anonymous';
+          document.body.appendChild(script);
+          // Clean up listeners
+          ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
+            window.removeEventListener(e, loadAds);
+          });
+        }
+        // Load on interaction
+        ['scroll', 'mousemove', 'touchstart'].forEach(function(e) {
+          window.addEventListener(e, loadAds, { passive: true, once: true });
+        });
+        // Fallback: load after 3.5 seconds anyway
+        setTimeout(loadAds, 3500);
+      })();
+    </script>
   </body>
 </html>
