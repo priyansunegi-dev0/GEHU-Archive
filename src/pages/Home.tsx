@@ -277,7 +277,7 @@ export function Home() {
                   : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                   }`}
               >
-                {crumb.name}
+                {crumb.name.toLowerCase()}
               </button>
             </div>
           ))}
