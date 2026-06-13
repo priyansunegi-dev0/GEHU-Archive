@@ -260,7 +260,7 @@ export function Home() {
       )}
 
       {/* Top Header Section with Breadcrumb */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 mb-6 border-b border-zinc-200 dark:border-zinc-800">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 mb-0 border-b border-zinc-200 dark:border-zinc-800">
         <nav className="flex items-center gap-1 text-base md:text-lg flex-wrap">
           {currentFolder && (
             <ArrowUp className="h-5 w-5 cursor-pointer mr-2" onClick={goUpOneLevel} />
@@ -303,7 +303,7 @@ export function Home() {
           </div>
         ) : (
           <>
-            <div className="flex flex-col mt-4 divide-y divide-zinc-200 dark:divide-zinc-800">
+            <div className="flex flex-col mt-0 divide-y divide-zinc-200 dark:divide-zinc-800">
               {subFolders.map((folder: FolderType) => (
                 <div key={folder.id} className="py-5">
                   <button
