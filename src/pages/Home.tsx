@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SEO } from '@/components/SEO';
-import { AdBanner } from '@/components/AdBanner';
 import { ArrowUp } from 'lucide-react';
 import type { Folder as FolderType, PDF } from '@/types';
 
@@ -260,8 +259,6 @@ export function Home() {
         </h1>
       )}
 
-      {!currentFolder && <AdBanner slot="2605579668" />}
-
       {/* Top Header Section with Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <nav className="flex items-center gap-1 text-base md:text-lg flex-wrap">
@@ -394,11 +391,6 @@ export function Home() {
               </a>
             </p>
           </div>
-
-          <AdBanner
-            slot="5110950352"
-            className="w-full mt-8 overflow-hidden flex justify-center"
-          />
         </>
       )}
 
