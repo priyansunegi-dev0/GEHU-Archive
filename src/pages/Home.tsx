@@ -260,10 +260,10 @@ export function Home() {
       )}
 
       {/* Top Header Section with Breadcrumb */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 mb-0 border-b-2 border-zinc-200 dark:border-zinc-800">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
         <nav className="flex items-center gap-1 text-lg md:text-xl flex-wrap">
           <ArrowUp 
-            className={`h-5 w-5 md:h-6 md:w-6 mr-2 transition-colors ${currentFolder ? 'cursor-pointer hover:opacity-80' : 'text-gray-300 dark:text-gray-700 cursor-not-allowed'}`} 
+            className={`h-5 w-5 md:h-6 md:w-6 mr-2 transition-colors text-black dark:text-white ${currentFolder ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`} 
             onClick={currentFolder ? goUpOneLevel : undefined} 
           />
           {breadcrumb.map((crumb: BreadcrumbItem, index: number) => (
