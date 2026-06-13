@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 interface SEOProps {
-  page: 'home' | 'doubts' | 'contribute' | 'about' | 'admin' | 'privacy' | 'disclaimer' | 'contact';
+  page: 'home' | 'doubts' | 'about' | 'admin' | 'disclaimer' | 'contact';
 }
 
 const SITE_TITLE = "PYQs Archive - Graphic Era";
@@ -29,11 +29,6 @@ export function SEO({ page }: SEOProps) {
         pageDescription = `Ask questions, get solutions, and share academic knowledge with peers at Graphic Era Hill University. Prepare better for exam papers together.`;
         pageKeywords = `${baseKeywords}, gehu solutions, gehu study community, solve questions gehu`;
         break;
-      case 'contribute':
-        pageTitle = `Contribute Study Material | ${SITE_TITLE}`;
-        pageDescription = `Upload and share previous year question papers, notes, or solutions for Graphic Era Hill University. Help other students with their exam preparation.`;
-        pageKeywords = `${baseKeywords}, upload gehu papers, contribute notes, share study material`;
-        break;
       case 'about':
         pageTitle = `About the Project | ${SITE_TITLE}`;
         pageDescription = SITE_DESCRIPTION;
@@ -43,11 +38,6 @@ export function SEO({ page }: SEOProps) {
         pageTitle = `Admin Access | ${SITE_TITLE}`;
         pageDescription = `Secure dashboard login for GEHU Archive administration.`;
         pageKeywords = `${baseKeywords}, admin access portal`;
-        break;
-      case 'privacy':
-        pageTitle = `Privacy Policy | ${SITE_TITLE}`;
-        pageDescription = `Privacy Policy for GEHU Archive. Read how we collect and protect your data.`;
-        pageKeywords = `${baseKeywords}, privacy policy`;
         break;
       case 'disclaimer':
         pageTitle = `Disclaimer | ${SITE_TITLE}`;
