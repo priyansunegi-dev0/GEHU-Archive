@@ -5,7 +5,7 @@ import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Toaster } from "@/components/ui/sonner"
 
-const Home = lazy(() => import("@/pages/Home").then(m => ({ default: m.Home })))
+import { Home } from "@/pages/Home"
 const Doubts = lazy(() => import("@/pages/Doubts").then(m => ({ default: m.Doubts })))
 const About = lazy(() => import("@/pages/About").then(m => ({ default: m.About })))
 const Disclaimer = lazy(() => import("@/pages/Disclaimer").then(m => ({ default: m.Disclaimer })))
