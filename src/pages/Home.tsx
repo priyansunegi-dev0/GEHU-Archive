@@ -261,9 +261,9 @@ export function Home() {
 
       {/* Top Header Section with Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-        <nav className="flex items-center gap-1 text-lg md:text-xl flex-wrap">
+        <nav className="flex items-center gap-1 text-xl md:text-2xl flex-wrap">
           <ArrowUp 
-            className={`h-5 w-5 md:h-6 md:w-6 mr-2 transition-colors text-black dark:text-white ${currentFolder ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`} 
+            className={`h-6 w-6 md:h-7 md:w-7 mr-2 transition-colors text-black dark:text-white ${currentFolder ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`} 
             onClick={currentFolder ? goUpOneLevel : undefined} 
           />
           {breadcrumb.map((crumb: BreadcrumbItem, index: number) => (
@@ -272,7 +272,7 @@ export function Home() {
               <button
                 onClick={() => navigateBreadcrumb(index)}
                 disabled={index === breadcrumb.length - 1}
-                className={`flex items-center gap-1 px-2 py-1 rounded transition-colors text-base md:text-lg ${index === breadcrumb.length - 1
+                className={`flex items-center gap-1 px-2 py-1 rounded transition-colors text-lg md:text-xl ${index === breadcrumb.length - 1
                   ? 'text-black dark:text-white font-semibold cursor-default'
                   : 'text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
                   }`}
