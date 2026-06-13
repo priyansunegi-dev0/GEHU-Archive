@@ -260,7 +260,7 @@ export function Home() {
       )}
 
       {/* Top Header Section with Breadcrumb */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 mb-6 border-b border-zinc-200 dark:border-zinc-800">
         <nav className="flex items-center gap-1 text-base md:text-lg flex-wrap">
           {currentFolder && (
             <ArrowUp className="h-5 w-5 cursor-pointer mr-2" onClick={goUpOneLevel} />
