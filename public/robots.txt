@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /contribute
-Disallow: /pyqs/contribute
-Disallow: /admin
 
 Sitemap: https://in-gehu.in/sitemap.xml

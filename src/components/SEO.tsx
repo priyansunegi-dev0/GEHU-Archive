@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 
 interface SEOProps {
-  page: 'home' | 'doubts' | 'about' | 'admin' | 'disclaimer' | 'contact';
+  page: 'home' | 'about' | 'disclaimer' | 'contact';
 }
 
 const SITE_TITLE = "PYQs Archive - Graphic Era";
-const SITE_DESCRIPTION = "GEHU Archive is a student\u2011driven collection of previous\u2011year question papers of Graphic Era Hill University, Dehradun Campus. It also hosts a Doubts section where students can ask and answer queries.";
+const SITE_DESCRIPTION = "GEHU Archive is a student\u2011driven collection of previous\u2011year question papers of Graphic Era Hill University, Dehradun Campus.";
 
 export function SEO({ page }: SEOProps) {
   useEffect(() => {
@@ -24,21 +24,13 @@ export function SEO({ page }: SEOProps) {
         pageDescription = SITE_DESCRIPTION;
         pageKeywords = `${baseKeywords}, gehu exam papers, gehu notes download, gehu question papers`;
         break;
-      case 'doubts':
-        pageTitle = `Doubts | ${SITE_TITLE}`;
-        pageDescription = `Ask questions, get solutions, and share academic knowledge with peers at Graphic Era Hill University. Prepare better for exam papers together.`;
-        pageKeywords = `${baseKeywords}, gehu solutions, gehu study community, solve questions gehu`;
-        break;
+
       case 'about':
         pageTitle = `About the Project | ${SITE_TITLE}`;
         pageDescription = SITE_DESCRIPTION;
         pageKeywords = `${baseKeywords}, gehu portal info, student archive initiative, graphic era info`;
         break;
-      case 'admin':
-        pageTitle = `Admin Access | ${SITE_TITLE}`;
-        pageDescription = `Secure dashboard login for GEHU Archive administration.`;
-        pageKeywords = `${baseKeywords}, admin access portal`;
-        break;
+
       case 'disclaimer':
         pageTitle = `Disclaimer | ${SITE_TITLE}`;
         pageDescription = `Disclaimer for GEHU Archive. Student-driven portal with no official university affiliation.`;

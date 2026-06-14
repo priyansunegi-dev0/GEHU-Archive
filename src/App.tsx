@@ -6,11 +6,11 @@ import { Footer } from "@/components/Footer"
 import { Toaster } from "@/components/ui/sonner"
 
 import { Home } from "@/pages/Home"
-const Doubts = lazy(() => import("@/pages/Doubts").then(m => ({ default: m.Doubts })))
+
 const About = lazy(() => import("@/pages/About").then(m => ({ default: m.About })))
 const Disclaimer = lazy(() => import("@/pages/Disclaimer").then(m => ({ default: m.Disclaimer })))
 const Contact = lazy(() => import("@/pages/Contact").then(m => ({ default: m.Contact })))
-const AdminDashboard = lazy(() => import("@/pages/AdminDashboard").then(m => ({ default: m.AdminDashboard })))
+
 const NotFound = lazy(() => import("@/pages/NotFound").then(m => ({ default: m.NotFound })))
 
 const PageSkeleton = () => (
@@ -110,7 +110,7 @@ export function App() {
           <Route path="/" element={<Navigate to="/pyqs" replace />} />
 
           {/* Redirect legacy paths to new nested paths */}
-          <Route path="/doubts" element={<Navigate to="/pyqs/doubts" replace />} />
+
           <Route path="/about" element={<Navigate to="/pyqs/about" replace />} />
           <Route path="/disclaimer" element={<Navigate to="/pyqs/disclaimer" replace />} />
           <Route path="/contact" element={<Navigate to="/pyqs/contact" replace />} />
@@ -128,18 +128,7 @@ export function App() {
               </div>
             }
           />
-          <Route
-            path="/pyqs/doubts"
-            element={
-              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
-                <Header />
-                <div className="flex-grow">
-                  <Doubts />
-                </div>
-                <Footer />
-              </div>
-            }
-          />
+
           <Route
             path="/pyqs/about"
             element={
@@ -178,17 +167,7 @@ export function App() {
             }
           />
 
-          <Route
-            path="/admin"
-            element={
-              <div className="min-h-screen flex flex-col bg-white dark:bg-black text-black dark:text-white">
-                <Header />
-                <div className="flex-grow pb-10">
-                  <AdminDashboard />
-                </div>
-              </div>
-            }
-          />
+
 
           {/* Custom 404 page for invalid paths */}
           <Route

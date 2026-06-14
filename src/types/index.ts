@@ -5,7 +5,7 @@ export interface Folder {
   created_by: string;
   created_at: string;
   updated_at: string;
-  allow_contributions: boolean;
+
   children?: Folder[];
 }
 

@@ -32,7 +32,7 @@ function coursesManifestPlugin() {
               id: cleanId,
               name: item.name,
               parent_id: parentId,
-              allow_contributions: false,
+
               created_at: folderStats.birthtime.toISOString(),
               created_by: '0',
               updated_at: folderStats.mtime.toISOString()

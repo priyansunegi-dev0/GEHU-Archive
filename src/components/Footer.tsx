@@ -1,10 +1,11 @@
 import { motion } from "framer-motion"
 
-import { MessageSquare, Archive, AlertTriangle, Mail } from 'lucide-react';
+import { Archive, AlertTriangle, Mail } from 'lucide-react';
 import { Separator } from "@/components/ui/separator"
 import { Link } from "react-router-dom"
 
-// Our mission is to provide easy access to past exam papers to help students prepare effectively. It also offers a Doubts forum for students to post and discuss academic queries.
+
+
 
 
 
@@ -33,7 +34,7 @@ const socialLinks: SocialLink[] = [
 
 const quickLinks = [
   { label: "About", href: "/pyqs/about", icon: Archive, isExternal: false },
-  { label: "Doubts", href: "/pyqs/doubts", icon: MessageSquare, isExternal: false },
+
   { label: "Disclaimer", href: "/pyqs/disclaimer", icon: AlertTriangle, isExternal: false },
   { label: "Contact Us", href: "/pyqs/contact", icon: Mail, isExternal: false },
 ]
@@ -61,14 +62,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-8 sm:px-12 py-14">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
-          
+
           {/* Left Column: Maintainer Info (takes 2 cols on desktop) */}
           <div className="md:col-span-2 space-y-4">
             <div>
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-1">Maintained by</h3>
               <p className="text-xl text-zinc-600 dark:text-gray-400">a group of students</p>
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
               {socialLinks.map((social) => (
                 <a
@@ -85,7 +86,7 @@ export function Footer() {
             </div>
 
             <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
-              GEHU Archive is a student‑driven collection of previous‑year question papers of Graphic Era Hill University, Dehradun Campus. It also hosts a Doubts section where students can ask and answer queries.
+              GEHU Archive is a student‑driven collection of previous‑year question papers of Graphic Era Hill University, Dehradun Campus.
             </p>
           </div>
 
@@ -129,7 +130,7 @@ export function Footer() {
               <Archive className="h-3 w-3 text-zinc-900 dark:text-white" />
             </div>
             <p className="text-xs text-zinc-500 dark:text-gray-400">
-              
+
             </p>
           </div>
           <p className="text-xs text-zinc-500 dark:text-zinc-600">

@@ -18,12 +18,6 @@ export function NotFound() {
         >
           Browse PYQs
         </Link>
-        <Link
-          to="/pyqs/doubts"
-          className="px-6 py-2.5 rounded-lg border border-zinc-300 dark:border-zinc-700 text-black dark:text-white font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
-        >
-          Go to Doubts
-        </Link>
       </div>
     </main>
   );

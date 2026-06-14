@@ -6,11 +6,7 @@
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://in-gehu.in/pyqs/doubts</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://in-gehu.in/pyqs/about</loc>
     <changefreq>monthly</changefreq>

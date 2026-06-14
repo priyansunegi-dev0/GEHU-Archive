@@ -10,7 +10,7 @@ export function Disclaimer() {
       if (hostname.includes("dehradun")) setCampusName("Dehradun Campus");
       else if (hostname.includes("haldwani")) setCampusName("Haldwani Campus");
       else if (hostname.includes("bhimtal")) setCampusName("Bhimtal Campus");
-      else if (hostname.includes("doubts")) setCampusName("Doubts Portal");
+
     }
   }, []);
 
