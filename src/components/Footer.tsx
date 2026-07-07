@@ -63,13 +63,8 @@ export function Footer() {
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
 
-          {/* Left Column: Maintainer Info (takes 2 cols on desktop) */}
+          {/* Left Column: Info (takes 2 cols on desktop) */}
           <div className="md:col-span-2 space-y-4">
-            <div>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-1">Maintained by</h3>
-              <p className="text-xl text-zinc-600 dark:text-gray-400">a group of students</p>
-            </div>
-
             <div className="flex flex-wrap gap-2">
               {socialLinks.map((social) => (
                 <a
@@ -86,7 +81,7 @@ export function Footer() {
             </div>
 
             <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
-              GEHU Archive is a student‑driven collection of previous‑year question papers of Graphic Era Hill University, Dehradun Campus.
+              GEHU Archive is a collection of previous‑year question papers of Graphic Era Hill University, Dehradun Campus.
             </p>
           </div>
 

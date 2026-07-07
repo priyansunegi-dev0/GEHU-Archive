@@ -19,10 +19,7 @@ export function About() {
         {/* Section: Description */}
         <section className="space-y-4">
           <p className="text-lg leading-relaxed">
-            This GEHU PYQs Archive website was created by <strong className="text-black dark:text-white font-semibold">a group of students</strong> of Graphic Era Hill University.
-          </p>
-          <p className="text-lg leading-relaxed">
-            This site is not affiliated with Graphic Era Hill University or any of its campuses. This site is created for the students of GEHU to access previous year question papers easily.
+            This site is not affiliated with Graphic Era Hill University or any of its campuses. This site is created for the student of GEHU Dehradun Campus to access previous year question papers easily.
           </p>
         </section>
 
