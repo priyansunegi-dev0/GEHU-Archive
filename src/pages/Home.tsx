@@ -374,7 +374,7 @@ export function Home() {
               </>
             )}
 
-            {currentFolder?.id?.startsWith('BTECH') && (
+            {currentFolder?.id === 'BTECH' && (
               <div className="py-6 border-t border-zinc-200 dark:border-zinc-800 mt-4">
                 <a
                   href="https://chat.whatsapp.com/F9YOQTcSJALJRfPdQ12CoN"
