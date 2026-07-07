@@ -295,78 +295,95 @@ export function Home() {
               </div>
             ))}
           </div>
-        ) : isEmpty ? (
-          <div className="py-16 text-center">
-            <FolderImgLg />
-            <p className="text-gray-500 dark:text-gray-400 font-medium">
-              {currentFolder ? 'This folder is empty' : 'No folders yet'}
-            </p>
-          </div>
         ) : (
           <>
-            <div className="flex flex-col mt-0 divide-y divide-zinc-200 dark:divide-zinc-800">
-              {subFolders.map((folder: FolderType) => (
-                <div key={folder.id} className="py-5">
-                  <button
-                    onClick={() => openFolder(folder)}
-                    className="flex w-full items-center gap-4 text-left text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
-                  >
-                    <FolderImg name={folder.name} />
-                    <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-base sm:text-lg md:text-xl">
-                      {!currentFolder
-                        ? folder.name.toUpperCase()
-                        : (folder.name.toUpperCase() === "OTHERS" || folder.name.toUpperCase() === "OLD")
-                          ? folder.name.toUpperCase()
-                          : folder.name.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')}
-                    </span>
-                  </button>
-                </div>
-              ))}
-            </div>
-            {currentFolder?.id === 'BTECH-Year 1' && (
-              <div className="py-6 border-t border-zinc-200 dark:border-zinc-800 mt-2 flex flex-col gap-4">
-                <div>
-                  <a
-                    href="https://drive.google.com/drive/folders/1_ebYoj01H5qGAw5cMW_WDzwf7lymLkbW"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-sm md:text-base lg:text-lg font-bold text-black dark:text-white underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
-                  >
-                    Computer Science Study Material
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="https://drive.google.com/drive/folders/1pZ2F8_CXIqQb9NcTz5JmxIZbEtwHPLoW"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-sm md:text-base lg:text-lg font-bold text-black dark:text-white underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
-                  >
-                    Engineering Physics
-                  </a>
-                </div>
+            {isEmpty ? (
+              <div className="py-16 text-center">
+                <FolderImgLg />
+                <p className="text-gray-500 dark:text-gray-400 font-medium">
+                  {currentFolder ? 'This folder is empty' : 'No folders yet'}
+                </p>
               </div>
-            )}
-            {pdfs.length > 0 && (
-              <div className="flex flex-col divide-y divide-zinc-200 dark:divide-zinc-800">
-                {pdfs.map((pdf: PDF) => (
-                  <div key={pdf.id} className="py-5">
-                    <a
-                      href={pdf.file_path || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex w-full items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
-                    >
-                      <PdfIcon />
-                      <div style={{ fontFamily: "'Roboto', sans-serif" }}>
-                        <span className="text-sm sm:text-base md:text-lg block">{formatPdfName(pdf.file_name).title}</span>
-                        {formatPdfName(pdf.file_name).date && (
-                          <span className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 block mt-0.5">{formatPdfName(pdf.file_name).date}</span>
-                        )}
-                      </div>
-                    </a>
+            ) : (
+              <>
+                <div className="flex flex-col mt-0 divide-y divide-zinc-200 dark:divide-zinc-800">
+                  {subFolders.map((folder: FolderType) => (
+                    <div key={folder.id} className="py-5">
+                      <button
+                        onClick={() => openFolder(folder)}
+                        className="flex w-full items-center gap-4 text-left text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                      >
+                        <FolderImg name={folder.name} />
+                        <span style={{ fontFamily: "'Roboto', sans-serif" }} className="text-base sm:text-lg md:text-xl">
+                          {!currentFolder
+                            ? folder.name.toUpperCase()
+                            : (folder.name.toUpperCase() === "OTHERS" || folder.name.toUpperCase() === "OLD")
+                              ? folder.name.toUpperCase()
+                              : folder.name.split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')}
+                        </span>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                {currentFolder?.id === 'BTECH-Year 1' && (
+                  <div className="py-6 border-t border-zinc-200 dark:border-zinc-800 mt-2 flex flex-col gap-4">
+                    <div>
+                      <a
+                        href="https://drive.google.com/drive/folders/1_ebYoj01H5qGAw5cMW_WDzwf7lymLkbW"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block text-sm md:text-base lg:text-lg font-bold text-black dark:text-white underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
+                      >
+                        Computer Science Study Material
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        href="https://drive.google.com/drive/folders/1pZ2F8_CXIqQb9NcTz5JmxIZbEtwHPLoW"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block text-sm md:text-base lg:text-lg font-bold text-black dark:text-white underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
+                      >
+                        Engineering Physics
+                      </a>
+                    </div>
                   </div>
-                ))}
+                )}
+                {pdfs.length > 0 && (
+                  <div className="flex flex-col divide-y divide-zinc-200 dark:divide-zinc-800">
+                    {pdfs.map((pdf: PDF) => (
+                      <div key={pdf.id} className="py-5">
+                        <a
+                          href={pdf.file_path || '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex w-full items-center gap-3 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                        >
+                          <PdfIcon />
+                          <div style={{ fontFamily: "'Roboto', sans-serif" }}>
+                            <span className="text-sm sm:text-base md:text-lg block">{formatPdfName(pdf.file_name).title}</span>
+                            {formatPdfName(pdf.file_name).date && (
+                              <span className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 block mt-0.5">{formatPdfName(pdf.file_name).date}</span>
+                            )}
+                          </div>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+
+            {currentFolder?.id?.startsWith('BTECH') && (
+              <div className="py-6 border-t border-zinc-200 dark:border-zinc-800 mt-4">
+                <a
+                  href="https://chat.whatsapp.com/F9YOQTcSJALJRfPdQ12CoN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-sm md:text-base lg:text-lg font-bold text-black dark:text-white underline decoration-1 underline-offset-4 hover:opacity-85 transition-opacity"
+                >
+                  Join B.Tech Batchmates
+                </a>
               </div>
             )}
           </>
