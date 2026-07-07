@@ -47,6 +47,15 @@ export function Header() {
               </Link>
             )}
 
+            {pathname !== "/pyqs/contact" && (
+              <Link
+                to="/pyqs/contact"
+                className="text-lg font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                Contact
+              </Link>
+            )}
+
 
             <div className="flex items-center gap-2">
               {/* Dark Mode Toggle (Icon Only) */}
@@ -116,6 +125,16 @@ export function Header() {
                 className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
               >
                 About
+              </Link>
+            )}
+
+            {pathname !== "/pyqs/contact" && (
+              <Link
+                to="/pyqs/contact"
+                onClick={() => setMenuOpen(false)}
+                className="block text-base font-bold tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors py-2 px-3 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg"
+              >
+                Contact
               </Link>
             )}
           </nav>

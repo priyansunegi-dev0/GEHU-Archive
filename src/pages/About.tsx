@@ -1,5 +1,5 @@
 import { SEO } from '@/components/SEO';
-import { Link2, Info, ExternalLink, BookOpen } from 'lucide-react';
+import { Link2, ExternalLink, BookOpen } from 'lucide-react';
 
 export function About() {
 
@@ -10,7 +10,6 @@ export function About() {
       {/* Main Header */}
       <div className="border-b border-zinc-200 dark:border-zinc-800 pb-6 mb-10">
         <h1 className="text-4xl font-extrabold text-black dark:text-white tracking-tight flex items-center gap-3">
-          <Info className="h-8 w-8 text-zinc-500" />
           <span>About</span>
         </h1>
       </div>
