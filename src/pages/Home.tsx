@@ -22,15 +22,15 @@ const FolderImgLg = () => (
 
 const PdfIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 64" className="h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0">
-    <path d="M36 0H8C5.8 0 4 1.8 4 4v56c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4V16L36 0z" fill="#E53935"/>
-    <path d="M36 0v12c0 2.2 1.8 4 4 4h12L36 0z" fill="#EF9A9A"/>
+    <path d="M36 0H8C5.8 0 4 1.8 4 4v56c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4V16L36 0z" fill="#E53935" />
+    <path d="M36 0v12c0 2.2 1.8 4 4 4h12L36 0z" fill="#EF9A9A" />
     <text x="28" y="46" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold" fontFamily="Arial, sans-serif">PDF</text>
   </svg>
 );
 
 // Format PDF filename into title + date
 // e.g. bp105_t_sessional_1_2025_nov.pdf → { title: "BP105 - T • Sessional 1", date: "2025 Nov" }
-const months = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 const formatPdfName = (fileName: string): { title: string; date: string } => {
   const name = fileName.replace(/\.pdf$/i, '');
   const parts = name.split('_');
@@ -127,7 +127,7 @@ export function Home() {
     try {
       const stored = sessionStorage.getItem(SESSION_CACHE_KEY);
       if (stored) return false;
-    } catch (e) {}
+    } catch (e) { }
     return true;
   });
 
@@ -140,14 +140,14 @@ export function Home() {
       })
       .then((data) => {
         if (!isMounted) return;
-        
+
         // Detect actual difference to avoid unnecessary rendering
         const hasChanged = JSON.stringify(cachedManifest) !== JSON.stringify(data);
         if (hasChanged) {
           cachedManifest = data;
           try {
             sessionStorage.setItem(SESSION_CACHE_KEY, JSON.stringify(data));
-          } catch (e) {}
+          } catch (e) { }
           setAllFolders(data.folders || []);
           setAllPdfs(data.pdfs || []);
         }
@@ -214,12 +214,12 @@ export function Home() {
       }
       try {
         document.documentElement.scrollTop = 0;
-      } catch (e) {}
+      } catch (e) { }
       try {
         if (document.body) {
           document.body.scrollTop = 0;
         }
-      } catch (e) {}
+      } catch (e) { }
     };
     handleScroll();
     const timer = setTimeout(handleScroll, 50);
@@ -262,9 +262,9 @@ export function Home() {
       {/* Top Header Section with Breadcrumb */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
         <nav className="flex items-center gap-1 text-xl md:text-2xl flex-wrap">
-          <ArrowUp 
-            className={`h-6 w-6 md:h-7 md:w-7 mr-2 transition-colors text-black dark:text-white ${currentFolder ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`} 
-            onClick={currentFolder ? goUpOneLevel : undefined} 
+          <ArrowUp
+            className={`h-6 w-6 md:h-7 md:w-7 mr-2 transition-colors text-black dark:text-white ${currentFolder ? 'cursor-pointer hover:opacity-80' : 'cursor-default'}`}
+            onClick={currentFolder ? goUpOneLevel : undefined}
           />
           {breadcrumb.map((crumb: BreadcrumbItem, index: number) => (
             <div key={index} className="flex items-center gap-1">
@@ -378,7 +378,7 @@ export function Home() {
         <>
           <div className="mt-16 space-y-3">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black dark:text-white">
-              Join Whatsapp Community | 1300+ Students
+              Join Whatsapp Community | 1500+ Students
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-500 dark:text-zinc-400">
               Join{" "}

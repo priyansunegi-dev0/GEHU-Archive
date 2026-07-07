@@ -1,5 +1,5 @@
 import { SEO } from '@/components/SEO';
-import { Heart, Link2, Info, ExternalLink, BookOpen } from 'lucide-react';
+import { Link2, Info, ExternalLink, BookOpen } from 'lucide-react';
 
 export function About() {
 
@@ -30,7 +30,6 @@ export function About() {
         {/* Section: Why this website? */}
         <section className="space-y-3">
           <h2 className="text-2xl font-bold text-black dark:text-white flex items-center gap-2">
-            <Heart className="h-5 w-5 text-red-500 fill-red-500" />
             <span>Why this website?</span>
           </h2>
           <p className="text-lg italic pl-4 border-l-2 border-zinc-300 dark:border-zinc-700">
@@ -46,7 +45,7 @@ export function About() {
             <span>Also Check Out</span>
           </h3>
           <p className="text-base">
-            Join our WhatsApp Communities and Groups for discussions, circul ars, and other resources:
+            Join our WhatsApp Communities and Groups for discussions, circulars, and other resources:
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
@@ -64,7 +63,7 @@ export function About() {
                     GRAPHIANS
                   </h4>
                   <p className="text-xs text-green-600 dark:text-green-500 font-medium mt-1">
-                    1300+ Members
+                    1500+ Students
                   </p>
                 </div>
                 <ExternalLink className="h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
@@ -84,7 +83,7 @@ export function About() {
                     Discussions
                   </h4>
                   <p className="text-xs text-green-600 dark:text-green-500 font-medium mt-1">
-                    500+ Members
+                    500+ Students
                   </p>
                 </div>
                 <ExternalLink className="h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
@@ -104,7 +103,7 @@ export function About() {
                     Circular & Notices
                   </h4>
                   <p className="text-xs text-green-600 dark:text-green-500 font-medium mt-1">
-                    600+ Members
+                    600+ Students
                   </p>
                 </div>
                 <ExternalLink className="h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
@@ -124,8 +123,25 @@ export function About() {
                     Fest' Gallery
                   </h4>
                   <p className="text-xs text-green-600 dark:text-green-500 font-medium mt-1">
-                    1000+ Members
+                    1000+ Students
                   </p>
+                </div>
+                <ExternalLink className="h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
+              </div>
+            </a>
+
+            {/* Card 5: BTech Students */}
+            <a
+              href="https://chat.whatsapp.com/F9YOQTcSJALJRfPdQ12CoN"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all shadow-sm"
+            >
+              <div className="flex justify-between items-start">
+                <div>
+                  <h4 className="font-semibold text-black dark:text-white group-hover:underline">
+                    BTech Students
+                  </h4>
                 </div>
                 <ExternalLink className="h-4 w-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
               </div>
